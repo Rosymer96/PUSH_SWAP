@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+//#include "libft.h"
+#include "push_swap.h"
 
 static size_t	count_word(const char *str, char c)
 {

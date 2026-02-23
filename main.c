@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
 static void init_data(t_data *data)
 {
     data->stack_a = NULL;
@@ -19,7 +21,7 @@ static void init_data(t_data *data)
     data->disorder = 0.0;
 }
 
-void free_and_exit(t_*data, char **nums_split, int status)
+void free_and_exit(t_data *data, char **nums_split, int status)
 {
     if (nums_split)
         free_split(nums_split);
@@ -33,10 +35,12 @@ void free_and_exit(t_*data, char **nums_split, int status)
     exit(status);
 }
 
-int main(int ac, char *av)
+#include <stdio.h>
+
+int main(int ac, char **av)
 {
     t_data data;
-    char *nums_split;
+    char **nums_split;
     int i;
 
     if (ac < 2)
@@ -62,10 +66,27 @@ int main(int ac, char *av)
         free_split(nums_split);
         i++;
     }
-    if (check_duplicates(data->stack_a, data->size))
+    if (check_duplicates(data.stack_a, data.size))
         free_and_exit(&data, NULL, 1);
     /*Aqui envio la data a tu funcion ALBITA*/
 
-    free_and_exit(&data, NULL, 0);
+    // --- BLOQUE DE PRUEBA: BORRAR ANTES DE ENTREGAR ---
+    if (data.stack_a)
+    {
+        int j = 0;
+        printf("\n--- DEBUG DATA ---\n");
+        printf("Strategy:   %d\n", data.strategy);
+        printf("Bench Mode: %d\n", data.bench_mode);
+        printf("Stack Size: %d\n", data.size);
+        printf("Stack A:    ");
+        while (j < data.size)
+        {
+            printf("[%d] ", data.stack_a[j]);
+            j++;
+        }
+        printf("\n------------------\n\n");
+    }
+    // ------------------------------------------------
+        free_and_exit(&data, NULL, 0);
     return (0);
 }

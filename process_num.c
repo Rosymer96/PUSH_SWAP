@@ -1,3 +1,5 @@
+#include "push_swap.h"
+
 int is_numeric(char *str)
 {
     int i;
@@ -16,7 +18,7 @@ int is_numeric(char *str)
     return (1);
 }
 
-long long ft_atoil(char *str)
+long long ft_atoll(char *str)
 {
     long long res;
     int sign;
