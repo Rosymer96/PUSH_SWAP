@@ -19,7 +19,30 @@ static void init_data(t_data *data)
     data->strategy = 0;
     data->bench_mode = 0;
     data->disorder = 0.0;
+    data->stats.sa = 0;
+    data->stats.sb = 0;
+    data->stats.ss = 0;
+    data->stats.pa = 0;
+    data->stats.pb = 0;
+    data->stats.ra = 0;
+    data->stats.rb = 0;
+    data->stats.rr = 0;
+    data->stats.rra = 0;
+    data->stats.rrb = 0;
+    data->stats.rrr = 0;
+    data->stats.total = 0;
 }
+/* COMO PODRIAMOS AGREGAR EL CONTEO AL BENCHMARK
+void pb(t_data *data)
+{
+    // ... lógica
+    if (data->bench_mode)
+    {
+        data->stats.pb++;
+        data->stats.total++;
+    }
+    write(1, "pb\n", 3);
+}*/
 
 void free_and_exit(t_data *data, char **nums_split, int status)
 {
@@ -87,6 +110,8 @@ int main(int ac, char **av)
         printf("\n------------------\n\n");
     }
     // ------------------------------------------------
-        free_and_exit(&data, NULL, 0);
+    if (data.bench_mode)
+        print_benchmark(&data);
+    free_and_exit(&data, NULL, 0);
     return (0);
 }
