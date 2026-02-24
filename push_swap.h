@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 13:28:02 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/24 09:40:11 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/02/24 12:20:49 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,22 @@ typedef struct s_stack {
 
 } t_stack;
 
-typedef struct s_data {
-    int *stack_a;
-    int size;
-    int strategy;
-    int bench_mode;
-    double disorder;
-} t_data;
-
-//escoge el algoritmo en función de la flag
-void	choose_algorithm(t_data *data);
-//generan la estructura con la que trabajamos luego
-t_stack	**get_stack_a(t_data *data);
-void	ft_lstadd_back(t_stack **lst, t_stack *new);
-t_stack	*ft_lstnew(int content, int index);
-//función algoritmo adaptativo
-void	adaptive(t_data *data);
+//swap functions
+void	sa(t_stack *a);
+void	sb(t_stack *b);
+void	ss(t_stack *a, t_stack *b);
+//push functions
+void	pa(t_stack **a, t_stack **b);
+void	pb(t_stack **a, t_stack **b);
+//rotate functions
+void    ra(t_stack **a);
+void    rb(t_stack **b);
+void    rr(t_stack **a, t_stack **b);
+//reverse rotate funtions
+void    rra(t_stack **a);
+void    rrb(t_stack **b);
+void    rrr(t_stack **a, t_stack **b);
+//list functions needed
+t_stack	*ft_lstlast(t_stack *lst); //creo que podemos incluirla en el otro archivo de funciones y ya
 
 #endif
