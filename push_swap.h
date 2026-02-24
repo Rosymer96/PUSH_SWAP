@@ -15,10 +15,20 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef struct s_stats {
+    int sa; int sb; int ss;
+    int pa; int pb;
+    int ra; int rb; int rr;
+    int rra; int rrb; int rrr;
+    int total;
+} t_stats;
+
 typedef struct s_data {
     int *stack_a;
     int size;
     int strategy;
+    t_stats stats;
     int bench_mode;
     double disorder;
 } t_data;
@@ -41,6 +51,10 @@ int add_to_stack(t_data *data, int val);
 //Funciones de algoritmos ALBA
 
 
+//Funciones de impresion en terminal
+size_t	ft_strlen(const char *str);
+void	ft_putnbr_fd(int n, int fd);
+void print_benchmark(t_data *data);
 
 
 
