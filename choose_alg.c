@@ -32,10 +32,10 @@ t_stack	**get_stack_a(t_data *data) //genera la lista que enviaremos al algoritm
 	return (a);
 }
 
-void	choose_algorithm(t_data *data, double disorder) //escoge algoritmo según flags
+void	choose_algorithm(t_data *data) //escoge algoritmo según flags
 {
 	if (data->strategy == 1)
-		adaptive(data, disorder);
+		adaptive(data, data->disorder);
 	else if (data->strategy == 2)
 		simple(get_stack_a(data));
 	else if (data->strategy == 3)

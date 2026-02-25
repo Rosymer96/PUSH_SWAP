@@ -18,7 +18,7 @@ static void init_data(t_data *data)
     data->size = 0;
     data->strategy = 0;
     data->bench_mode = 0;
-    data->disorder = 0.0;
+    data->disorder = 0.9;
     data->stats.sa = 0;
     data->stats.sb = 0;
     data->stats.ss = 0;
@@ -44,19 +44,7 @@ void pb(t_data *data)
     write(1, "pb\n", 3);
 }*/
 
-void free_and_exit(t_data *data, char **nums_split, int status)
-{
-    if (nums_split)
-        free_split(nums_split);
-    if (data && data->stack_a)
-    {
-        free(data->stack_a);
-        data->stack_a = NULL;
-    }
-    if (status == 1)
-        write(2, "Error\n", 6);
-    exit(status);
-}
+
 
 #include <stdio.h>
 
@@ -71,28 +59,55 @@ int main(int ac, char **av)
     init_data(&data);
     i = 1;
     /* Mientras que comiencen con -- se va actualizando tanto el algoritmo y el bench ya que si hay varios algoritmos se va a coger el ultimo siempre */
+    /*
     while(av[i] && is_flag(av[i]))
     {
         update_flag(&data, av[i]);
         i++;
     }
-    /*Si solo hay flags termina sin devolver nadita*/
+    //Si solo hay flags termina sin devolver nadita
     if(!av[i])
         return (0);
     while (av[i])
     {
         nums_split = ft_split(av[i], ' ');
         if (!nums_split)
-            free_and_exit(&data, NULL, 1);
-        if (!process_num(nums_split, &data))
-            free_and_exit(&data, nums_split, 1);
-        free_split(nums_split);
+        free_and_exit(&data, NULL, 1);
+    if (!process_num(nums_split, &data))
+    free_and_exit(&data, nums_split, 1);
+    free_split(nums_split);
+    i++;
+    }
+    */
+    while (av[i])
+    {
+        if (is_flag(av[i]))
+        {
+            update_flag(&data, av[i]);
+        }
+        else
+        {
+            nums_split = ft_split(av[i], ' ');
+            if (!nums_split)
+                free_and_exit(&data, NULL, 1);
+            if (!process_num(nums_split, &data))
+                free_and_exit(&data, nums_split, 1);
+            free_split(nums_split);
+        }
         i++;
     }
+    if (data.size == 0)
+        free_and_exit(&data, NULL, 1);
     if (check_duplicates(data.stack_a, data.size))
         free_and_exit(&data, NULL, 1);
-    /*Aqui envio la data a tu funcion ALBITA*/
 
+
+    /*Aqui envio la data a tu funcion ALBITA*/
+    //Hacer el get_disorder y guardarlo en data;
+
+
+    //choose_alg mandandole data.
+    
     // --- BLOQUE DE PRUEBA: BORRAR ANTES DE ENTREGAR ---
     if (data.stack_a)
     {

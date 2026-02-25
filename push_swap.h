@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 typedef struct s_stats
 {
@@ -43,6 +44,20 @@ typedef struct s_stack
 
 }	t_stack;
 
+// Gestion de memoria y salida en caso de error
+void free_and_exit(t_data *data, char **nums_split, int status);
+void free_split(char **words);
+//Parseo y flags
+int is_flag(char *arg);
+void update_flag(t_data *data, char *arg);
+int process_num(char **nums_split, t_data *data);
+char	**ft_split(char const *s, char c);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+//Validacion y conversion de numeros
+int is_numeric(char *str);
+long long ft_atoll(char *str);
+int check_duplicates(int *stack, int size);
+int add_to_stack(t_data *data, int val);
 //escoge el algoritmo en función de la flag
 void	choose_algorithm(t_data *data);
 //saca el indice de desorden
@@ -55,19 +70,28 @@ t_stack	*ft_lstlast(t_stack *lst);
 //función algoritmo adaptativo
 void	adaptive(t_data *data, double disorder);
 //swap functions
-void	sa(t_stack *a);
-void	sb(t_stack *b);
-void	ss(t_stack *a, t_stack *b);
+void	sa(t_stack *a, t_data *data);
+void	sb(t_stack *b, t_data *data);
+void	ss(t_stack *a, t_stack *b, t_data *data);
 //push functions
-void	pa(t_stack **a, t_stack **b);
-void	pb(t_stack **a, t_stack **b);
+void	pa(t_stack **a, t_stack **b, t_data *data);
+void	pb(t_stack **a, t_stack **b, t_data *data);
 //rotate functions
-void	ra(t_stack **a);
-void	rb(t_stack **b);
-void	rr(t_stack **a, t_stack **b);
+void	ra(t_stack **a, t_data *data);
+void	rb(t_stack **b, t_data *data);
+void	rr(t_stack **a, t_stack **b, t_data *data);
 //reverse rotate funtions
-void	rra(t_stack **a);
-void	rrb(t_stack **b);
-void	rrr(t_stack **a, t_stack **b);
+void	rra(t_stack **a, t_data *data);
+void	rrb(t_stack **b, t_data *data);
+void	rrr(t_stack **a, t_stack **b, t_data *data);
+
+void	simple(t_stack **a);
+void	medium(t_stack **a);
+void	complex(t_stack **a);
+
+//Funciones de impresion en terminal
+size_t	ft_strlen(const char *str);
+void	ft_putnbr_fd(int n, int fd);
+void print_benchmark(t_data *data);
 
 #endif

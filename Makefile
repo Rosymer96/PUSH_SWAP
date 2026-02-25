@@ -10,24 +10,23 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME    = push_swap
+HEADER  = push_swap.h
+CC      = cc
+FLAGS   = -Wall -Wextra -Werror
 
-HEADER = push_swap.h
+SRC     = main2.c adaptive.c utils.c benchmark_utils.c choose_alg.c \
+			free_memory.c ft_split.c list_functions.c parser_args.c \
+			process_num.c push.c reverse_rotate.c rotate.c swap.c 
 
-CC = cc
 
-FLAGS = -Wall -Wextra -Werror
-
-AR = ar -rcs
-
-SRC = 
-
-OBJ = $(SRC:.c=.o)
+OBJ     = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(AR) $(NAME) $(OBJ)
+	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+	@echo " $(NAME) compilado y listo."
 
 %.o: %.c $(HEADER)
 	$(CC) $(FLAGS) -c $< -o $@
