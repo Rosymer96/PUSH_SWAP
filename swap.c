@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 10:45:55 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/24 12:21:09 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/02/25 12:15:01 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	swap(t_stack *lst)
 {
-	int tmp;
+	int	tmp;
 
 	if (!lst)
 		return ;
@@ -25,25 +25,29 @@ static void	swap(t_stack *lst)
 	lst->index = (lst->next)->index;
 	(lst->next)->index = tmp;
 }
-void	sa(t_stack *a)
+
+void	sa(t_stack *a, t_data *data)
 {
-	int tmp;
+	int	tmp;
 
 	swap(a);
-	ft_printf("sa\n");//podemos usar write
+	write(1, "sa\n", 3);
+	data->stats.sa++;
 }
 
-void	sb(t_stack *b)
+void	sb(t_stack *b, t_data *data)
 {
-	int tmp;
+	int	tmp;
 
 	swap(b);
-	ft_printf("sa\n");
+	write(1, "sb\n", 3);
+	data->stats.sb++;
 }
 
-void    ss(t_stack *a, t_stack *b)
+void	ss(t_stack *a, t_stack *b, t_data *data)
 {
 	swap(a);
 	swap(b);
-	ft_printf("ss\n");
+	write(1, "ss\n", 3);
+	data->stats.ss++;
 }
