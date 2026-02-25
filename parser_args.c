@@ -6,7 +6,7 @@
 /*   By: rosvela <rosvela@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 11:15:45 by rosvela           #+#    #+#             */
-/*   Updated: 2026/02/25 11:15:45 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/02/25 13:43:37 by rosvela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,34 +25,34 @@ void	update_flag(t_data *data, char *arg)
 	{
 		if (data->strategy != 0)
 			free_and_exit(data, NULL, 1);
-        data->strategy = 2; // O(n2) LIS
+		data->strategy = 2; // O(n2) LIS
 	}
 	else if (ft_strncmp(arg, "--medium", 9) == 0)
 	{
 		if (data->strategy != 0)
 			free_and_exit(data, NULL, 1);
-        data->strategy = 3; // O(n*sqrt(n)) K-sort
+		data->strategy = 3; // O(n*sqrt(n)) K-sort
 	}
 	else if (ft_strncmp(arg, "--complex", 10) == 0)
 	{
 		if (data->strategy != 0)
 			free_and_exit(data, NULL, 1);
-        data->strategy = 4; // O(n log n) Radix
+		data->strategy = 4; // O(n log n) Radix
 	}
 	else if (ft_strncmp(arg, "--adaptive", 9) == 0)
 	{
 		if (data->strategy != 0)
 			free_and_exit(data, NULL, 1);
-        data->strategy = 1;
+		data->strategy = 1;
 	}
 	else if (ft_strncmp(arg, "--bench", 8) == 0)
 	{
 		if (data->bench_mode != 0)
 			free_and_exit(data, NULL, 1);
-        data->bench_mode = 1;              // Activa modo benchmark
+		data->bench_mode = 1; // Activa modo benchmark
 	}
-	else 
-        free_and_exit(data, NULL, 1); // Es potencialmente un número
+	else
+		free_and_exit(data, NULL, 1); // Es potencialmente un número
 }
 
 int	process_num(char **nums_split, t_data *data)
