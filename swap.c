@@ -28,8 +28,6 @@ static void	swap(t_stack *lst)
 
 void	sa(t_stack *a, t_data *data)
 {
-	int	tmp;
-
 	swap(a);
 	write(1, "sa\n", 3);
 	data->stats.sa++;
@@ -37,8 +35,6 @@ void	sa(t_stack *a, t_data *data)
 
 void	sb(t_stack *b, t_data *data)
 {
-	int	tmp;
-
 	swap(b);
 	write(1, "sb\n", 3);
 	data->stats.sb++;

@@ -13,53 +13,25 @@
 #include "push_swap.h"
 #include <stdio.h> //para las comprobaciones de en medio de la función, luego se borran
 
-double  get_disorder(int *a, int size) //mide el índice de desorden
-{
-	int		mistakes;
-	int		pairs;
-	int		i;
-	int		j;
-
-	mistakes = 0;
-	pairs = 0;
-	i = 0;
-	while (i < (size - 1))
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			pairs++;
-			printf("pairs: %i\n", pairs);
-			if (a[i] > a[j])
-				mistakes++;
-			printf("mistakes: %i\n", mistakes);
-			j++;
-		}
-		i++;
-	}
-	if (pairs == 0)
-		return (0.0);
-	return ((double) mistakes / pairs);
-}
 //testea que llegue bien al algoritmo
-/*
-static void	simple(t_stack **a)
+
+void	simple(t_stack **a)
 {
 	(void)a;
 	printf("simple");
 }
 
-static void	medium(t_stack **a)
+void	medium(t_stack **a)
 {
 	(void)a;
 	printf("medium");
 }
 
-static void	complex(t_stack **a)
+void	complex(t_stack **a)
 {
 	(void)a;
 	printf("complex");
-}*/
+}
 
 void	adaptive(t_data *data, double disorder) //algoritmo adaptativo, escoge cuál se usa en función del índice de desorden
 {
