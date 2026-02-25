@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aux.c                                              :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rosvela <rosvela@student.42madrid.com      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/02/19 15:18:03 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/02/25 13:44:43 by rosvela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
-
 
 void	ft_putnbr_fd(int n, int fd)
 {
@@ -65,12 +64,12 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-double  get_disorder(int *a, int size) //mide el índice de desorden
+double	get_disorder(int *a, int size) //mide el índice de desorden
 {
-	int		mistakes;
-	int		pairs;
-	int		i;
-	int		j;
+	int	mistakes;
+	int	pairs;
+	int	i;
+	int	j;
 
 	mistakes = 0;
 	pairs = 0;
@@ -91,5 +90,5 @@ double  get_disorder(int *a, int size) //mide el índice de desorden
 	}
 	if (pairs == 0)
 		return (0.0);
-	return ((double) mistakes / pairs);
+	return ((double)mistakes / pairs);
 }
