@@ -18,7 +18,7 @@ static void init_data(t_data *data)
     data->size = 0;
     data->strategy = 0;
     data->bench_mode = 0;
-    data->disorder = 0.9;
+    data->disorder = 0.933334;
     data->stats.sa = 0;
     data->stats.sb = 0;
     data->stats.ss = 0;
@@ -107,7 +107,7 @@ int main(int ac, char **av)
 
 
     //choose_alg mandandole data.
-    
+
     // --- BLOQUE DE PRUEBA: BORRAR ANTES DE ENTREGAR ---
     if (data.stack_a)
     {
