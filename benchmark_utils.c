@@ -20,10 +20,12 @@ static char *get_strategy_name(int strategy)
     return ("Complex");
 }
 
-static char *get_complexity(int size)
+static char *get_complexity(double disorder)
 {
-    if (size <= 10) return ("O(n²)");
-    if (size <= 100) return ("O(n√n)");
+	if (disorder < 0.2)
+        return ("O(n²)");
+	else if (0.2 <= disorder && disorder < 0.5)
+        return ("O(n√n)");
     return ("O(n log n)");
 }
 
@@ -88,7 +90,7 @@ void print_benchmark(t_data *data)
     write(2, "[bench] strategy:  ", 19);
     write(2, get_strategy_name(data->strategy), ft_strlen(get_strategy_name(data->strategy)));
     write(2, " / ", 3);
-    write(2, get_complexity(data->size), ft_strlen(get_complexity(data->size)));
+    write(2, get_complexity(data->disorder), ft_strlen(get_complexity(data->disorder)));
     write(2, "\n", 1);
     write(2, "[bench] total_ops: ", 19);
     ft_putnbr_fd(data->stats.total, 2);
