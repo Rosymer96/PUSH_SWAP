@@ -42,13 +42,12 @@ static void print_disorder_fd(double disorder, int fd)
     int int_part;
     int dec_part;
 
+    disorder = disorder * 100;
+    
     // sacamos la parte entera casteando
     int_part = (int)disorder; 
     // sacamos los dos decimales restando y multiplicando
     dec_part = (int)((disorder - int_part) * 100);
-    // colocamos negativo pero no creo que sea necesario
-    if (dec_part < 0) 
-        dec_part *= -1;
     // 4. IMPRESIÓN POR PARTES
     ft_putnbr_fd(int_part, fd);    // Imprime "49"
     write(fd, ".", 1);             // Imprime el punto "."
