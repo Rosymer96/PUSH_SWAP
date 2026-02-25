@@ -13,26 +13,6 @@
 #include "push_swap.h"
 #include <stdio.h> //para las comprobaciones de en medio de la función, luego se borran
 
-//testea que llegue bien al algoritmo
-
-void	simple(t_stack **a)
-{
-	(void)a;
-	printf("simple");
-}
-
-void	medium(t_stack **a)
-{
-	(void)a;
-	printf("medium");
-}
-
-void	complex(t_stack **a)
-{
-	(void)a;
-	printf("complex");
-}
-
 void	adaptive(t_data *data, double disorder) //algoritmo adaptativo, escoge cuál se usa en función del índice de desorden
 {
 	//double	disorder;
