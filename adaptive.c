@@ -6,14 +6,14 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:46:26 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/23 18:11:33 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/02/25 11:32:23 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h> //para las comprobaciones de en medio de la función, luego se borran
 
-static double  get_disorder(int *a, int size) //mide el índice de desorden
+double  get_disorder(int *a, int size) //mide el índice de desorden
 {
 	int		mistakes;
 	int		pairs;
@@ -61,11 +61,11 @@ static void	complex(t_stack **a)
 	printf("complex");
 }*/
 
-void	adaptive(t_data *data) //algoritmo adaptativo, escoge cuál se usa en función del índice de desorden
+void	adaptive(t_data *data, double disorder) //algoritmo adaptativo, escoge cuál se usa en función del índice de desorden
 {
-	double	disorder;
+	//double	disorder;
 
-	disorder = get_disorder(data->stack_a, data->size);
+	//disorder = get_disorder(data->stack_a, data->size); //anadir en el main antes de todos los argumentos
 	printf("adaptive: %f\n", disorder);
 	if (disorder == 0.0)
 		return ;

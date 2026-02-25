@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 17:11:34 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/23 18:11:38 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/02/25 11:35:27 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ t_stack	*ft_lstnew(int content, int index)
 	if (!node)
 		return (NULL);
 	node->number = content;
-    node->index = index;
+	node->index = index;
 	node->next = NULL;
 	return (node);
 }
 
-static t_stack	*ft_lstlast(t_stack *lst)
+t_stack	*ft_lstlast(t_stack *lst)
 {
 	if (!lst)
 		return (NULL);
