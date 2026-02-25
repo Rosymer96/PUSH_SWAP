@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 18:06:40 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/23 18:11:37 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/02/25 11:36:24 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 t_stack	**get_stack_a(t_data *data) //genera la lista que enviaremos al algoritmo
 {
-	t_stack	**a = NULL;
+	t_stack	**a;
 	t_stack	*node;
 	int		i;
 
 	i = 0;
+	a = NULL;
 	while (i < data->size)
 	{
 		node = ft_lstnew(data->stack_a[i], i);
@@ -31,15 +32,15 @@ t_stack	**get_stack_a(t_data *data) //genera la lista que enviaremos al algoritm
 	return (a);
 }
 
-void	choose_algorithm(t_data *data) //escoge algoritmo según flags
+void	choose_algorithm(t_data *data, double disorder) //escoge algoritmo según flags
 {
-	if (data->strategy == 0)
-		adaptive(data);
-	else if (data->strategy == 1)
-		simple(get_stack_a(data));
+	if (data->strategy == 1)
+		adaptive(data, disorder);
 	else if (data->strategy == 2)
-		medium(get_stack_a(data));
+		simple(get_stack_a(data));
 	else if (data->strategy == 3)
+		medium(get_stack_a(data));
+	else if (data->strategy == 4)
 		complex(get_stack_a(data));
 }
 
