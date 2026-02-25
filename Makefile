@@ -6,7 +6,7 @@
 #    By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/19 13:28:09 by albben-a          #+#    #+#              #
-#    Updated: 2026/02/19 13:28:10 by albben-a         ###   ########.fr        #
+#    Updated: 2026/02/25 14:02:18 by albben-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,10 @@ HEADER  = push_swap.h
 CC      = cc
 FLAGS   = -Wall -Wextra -Werror
 
-SRC     = main2.c adaptive.c utils.c benchmark_utils.c choose_alg.c \
+SRC     = main2.c alg_adaptive.c alg_simple.c alg_medium.c alg_complex.c \
+			utils.c benchmark_utils.c choose_alg.c \
 			free_memory.c ft_split.c list_functions.c parser_args.c \
-			process_num.c push.c reverse_rotate.c rotate.c swap.c 
+			process_num.c mov_push.c mov_reverse_rotate.c mov_rotate.c mov_swap.c 
 
 
 OBJ     = $(SRC:.c=.o)
