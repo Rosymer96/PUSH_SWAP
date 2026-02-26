@@ -16,17 +16,19 @@
 t_stack	**get_stack_a(t_data *data)
 //genera la lista que enviaremos al algoritmo
 {
-	t_stack	**a;
+	t_stack	*a;
 	t_stack	*node;
 	int		i;
 
-	i = 0;
 	a = NULL;
+	i = 0;
 	while (i < data->size)
 	{
 		node = ft_lstnew(data->stack_a[i], i);
+		//habria que liberar en caso de error;
 		printf("[%i]", node->number);
-		ft_lstadd_back(a, node);
+		// necesitamos colocar & porque esta funcion espera un puntero doble **
+		ft_lstadd_back(&a, node);
 		i++;
 	}
 	printf("\n");
@@ -35,14 +37,25 @@ t_stack	**get_stack_a(t_data *data)
 
 void	choose_algorithm(t_data *data) //escoge algoritmo según flags
 {
+	t_stack *stack_a;
+	t_stack *stack_b;
+
+	stack_a = get_stack_a(data);
+	if (!stack_a)
+		return;
+	stack_b = NULL;
 	if (data->strategy == 1)
-		adaptive(data, data->disorder);
+		adaptive(data, &stack_a, &stack_b);
 	else if (data->strategy == 2)
-		simple(get_stack_a(data));
+		simple(data, &stack_a, &stack_b);
 	else if (data->strategy == 3)
-		medium(get_stack_a(data));
+		medium(data, &stack_a, &stack_b);
 	else if (data->strategy == 4)
-		complex(get_stack_a(data));
+		complex(data, &stack_a, &stack_b);
+
+	//Liberamos los stacks despues del algoritmo:
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 }
 
 //testea el código

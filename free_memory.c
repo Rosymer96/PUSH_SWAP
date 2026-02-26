@@ -40,3 +40,19 @@ void	free_split(char **words)
 	}
 	free(words);
 }
+
+void free_stack(t_stack **stack)
+{
+	t_stack *tmp;
+	t_stack	*stack_node;
+	if (!stack)
+		return;
+	stack_node = *stack;
+	while (stack_node)
+	{
+		tmp = stack_node->next;
+		free(stack_node);
+		stack_node = tmp;
+	}
+	free(stack);
+}
