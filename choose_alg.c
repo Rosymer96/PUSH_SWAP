@@ -6,61 +6,72 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 18:06:40 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/25 13:43:04 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/02/26 23:34:31 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-t_stack	**get_stack_a(t_data *data)
-//genera la lista que enviaremos al algoritmo
+static void	hard_code(t_stack **a, t_data *data)
 {
-	t_stack	**a;
-	t_stack	*node;
-	int		i;
-
-	i = 0;
-	a = NULL;
-	while (i < data->size)
+	if (data->disorder == 1)
 	{
-		node = ft_lstnew(data->stack_a[i], i);
-		printf("[%i]", node->number);
-		ft_lstadd_back(a, node);
-		i++;
+		sa((*a), data);
+		rra(a, data);
 	}
-	printf("\n");
-	return (a);
+	else if (data->disorder >= 0.6)
+	{
+		if ((*a)->number > (*a)->next->number)
+			ra(a, data);
+		else
+			rra(a, data);
+	}
+	else if (data->disorder <= 0.6)
+		sa((*a), data);
 }
 
 void	choose_algorithm(t_data *data) //escoge algoritmo según flags
 {
-	if (data->strategy == 1)
-		adaptive(data, data->disorder);
+	t_stack	*a;
+	t_stack	*b;
+	
+	a = get_stack_a(data);
+	b = get_stack_b(data);
+	if (data->disorder == 0.0)
+	{
+		free_stack(&a);
+		free_stack(&b);
+		return ;
+	}
+	else if (data->size == 2)
+		sa(a, data);
+	else if (data->size == 3)
+		hard_code(&a, data);
+	else if (data->strategy == 1)
+		adaptive(&a, &b, data->disorder);
 	else if (data->strategy == 2)
-		simple(get_stack_a(data));
+		simple(&a, &b);
 	else if (data->strategy == 3)
-		medium(get_stack_a(data));
+		medium(&a, &b);
 	else if (data->strategy == 4)
-		complex(get_stack_a(data));
+		complex(&a, &b);
+	free_stack(&a);
+	free_stack(&b);
 }
 
-//testea el código
 /*
 static void	init_data(t_data *data)
 {
-    data->size = 5;
+    data->size = 3;
     data->stack_a = malloc(sizeof(int) * data->size);
     if (!data->stack_a)
         return ;
-    data->stack_a[0] = 1;
-    data->stack_a[1] = 2;
+    data->stack_a[0] = 2;
+    data->stack_a[1] = 1;
     data->stack_a[2] = 3;
-    data->stack_a[3] = 87;
-	data->stack_a[4] = 23;
     data->strategy = 0;
     data->bench_mode = 0;
-    data->disorder = 0.0;
+    data->disorder = get_disorder(data->stack_a, data->size);
 }
 
 #include <stdio.h>
@@ -70,6 +81,7 @@ int	main(void)
 	t_data	data;
 
 	init_data(&data);
+	printf("disorder: %f\n", data.disorder);
 	choose_algorithm(&data);
 	return (0);
 }*/

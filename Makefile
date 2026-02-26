@@ -6,7 +6,7 @@
 #    By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/19 13:28:09 by albben-a          #+#    #+#              #
-#    Updated: 2026/02/25 14:02:18 by albben-a         ###   ########.fr        #
+#    Updated: 2026/02/26 21:19:34 by albben-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ FLAGS   = -Wall -Wextra -Werror
 SRC     = main2.c alg_adaptive.c alg_simple.c alg_medium.c alg_complex.c \
 			utils.c benchmark_utils.c choose_alg.c \
 			free_memory.c ft_split.c list_functions.c parser_args.c \
-			process_num.c mov_push.c mov_reverse_rotate.c mov_rotate.c mov_swap.c 
+			process_num.c mov_push.c mov_reverse_rotate.c mov_rotate.c mov_swap.c \
+			stack_creator.c
 
 
 OBJ     = $(SRC:.c=.o)
