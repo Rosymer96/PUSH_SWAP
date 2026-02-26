@@ -47,7 +47,6 @@ typedef struct s_stack
 {
 	int				number;
 	int				index;
-	int				keep;
 	struct s_stack	*next;
 
 }					t_stack;

@@ -24,10 +24,6 @@ static void	swap(t_stack *lst)
 	tmp = lst->index; //lo mismo pero con el index
 	lst->index = (lst->next)->index;
 	(lst->next)->index = tmp;
-	//intercambiar keep para mantener la huella de LIS
-	tmp = lst->keep;
-	lst->keep = (lst->next)->keep;
-	(lst->next)->keep = tmp;
 }
 
 void	sa(t_stack *a, t_data *data)

@@ -105,9 +105,147 @@ int *get_lis_ind(t_data *data, int *lis_size)
 	return (res);
 }
 
+void mark_index_lis(t_stack *a, int *lis_array, int lis_size)
+{
+	t_stack *tmp;
+	int	i;
+
+	tmp = a;
+	while(tmp)
+	{
+		tmp->index = 0;
+		i = 0;
+		while (i < lis_size)
+		{
+			if (tmp->number == lis_array[i])
+			{
+				tmp->index = -1; //marcamos los LIS
+				break;
+			}
+			i++;
+		}
+		tmp = tmp->next;
+	}
+}
+
+void push_non_lis(t_stack **a, t_stack **b, t_data data)
+{
+	int	i;
+	int	size;
+
+	i = 0;
+	size = data->size;
+	while (i < size)
+	{
+		if ((*a)->index != -1)
+			pb(a, b, data);
+		else
+			ra(a, data);
+		i++;
+	}
+}
+
+int find_min_pos(t_stack *a)
+{
+	int min_val;
+	int min_pos;
+	int i;
+
+	min_val = a->number;
+	min_pos = 0;
+	i = 0;
+	while (a)
+	{
+		if (a->number < min_val)
+		{
+			min_val = a->number;
+			min_pos = i;
+		}
+		a = a->next;
+		i++;
+	}
+	return (min_pos);
+
+}
+
+int	find_pos_target(t_stack *a, int num_b)
+{
+	t_stack	*tmp;
+	long	num_b_next;
+	int num_b_next_pos;
+	int 	i;
+
+	tmp = a;
+	num_b_next = 2147483648LL
+	num_b_next_pos = 0;
+	i = 0;
+	while (tmp)
+	{
+		if ((tmp->number > num_b) && (a->number < num_b_next))
+		{
+			num_b_next = tmp->number;
+			num_b_next_pos = i;
+
+		}
+		i++;
+		tmp = tmp->next;
+	}
+	// si no cambia es porque es el mas grande
+	if (num_b_next == 2147483648LL)
+		return (find_min_pos(a));
+	return (num_b_next_pos);
+}
+
+int get_len_a(t_stack *a)
+{
+	int i;
+
+	i = 0;
+	while (a)
+	{
+		i++;
+		a = a->next;
+	}
+	return (i);
+}
 
 
-void	simple(t_data *data, t_stack **a, t_stack **b)
+void	back_to_a(t_stack **a, t_stack **b, t_data *data)
+{
+	int	num_b;
+	int pos_target;
+	int len_a;
+	int rra_n;
+
+	while (*b)
+	{
+		num_b = (*b)->number;
+		pos_target = find_pos_target(*a, num_b);
+		len_a = get_len_a(*a);
+		if (pos_target <= (len_a / 2))
+		{
+			while (pos_target > 0)
+			{
+				ra(a, data);
+				pos_target--;
+			}
+		}
+		else
+		{
+			rra_n = len_a - pos_target;
+			while (rra_n > 0)
+			{
+				rra(a, data);
+				rra_n--;
+			}
+		}
+		pa(a, b, data);
+	}
+}
+
+
+
+void	alg_simple(t_data *data, t_stack **a, t_stack **b)
 {
 	(void)a;
 	printf("simple");
