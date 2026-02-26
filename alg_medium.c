@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	medium(t_stack **a)
+void	medium(t_data *data, t_stack **a, t_stack **b)
 {
 	(void)a;
 	printf("medium");

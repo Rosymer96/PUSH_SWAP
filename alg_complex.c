@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	complex(t_stack **a)
+void	complex(t_data *data, t_stack **a, t_stack **b)
 {
 	(void)a;
 	printf("complex");

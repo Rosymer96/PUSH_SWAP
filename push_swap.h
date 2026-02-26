@@ -47,6 +47,7 @@ typedef struct s_stack
 {
 	int				number;
 	int				index;
+	int				keep;
 	struct s_stack	*next;
 
 }					t_stack;
@@ -54,6 +55,7 @@ typedef struct s_stack
 // Gestion de memoria y salida en caso de error
 void				free_and_exit(t_data *data, char **nums_split, int status);
 void				free_split(char **words);
+void 				free_stack(t_stack **stack);
 //Parseo y flags
 int					is_flag(char *arg);
 void				update_flag(t_data *data, char *arg);
