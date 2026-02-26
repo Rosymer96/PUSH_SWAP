@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simple.c                                           :+:      :+:    :+:   */
+/*   alg_simple.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rosvela <rosvela@student.42madrid.com      +#+  +:+       +#+        */
+/*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:54:35 by rosvela           #+#    #+#             */
-/*   Updated: 2026/02/25 13:54:38 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/02/26 23:34:54 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	simple(t_stack **a)
+#include "push_swap.h"
+
+void	simple(t_stack **a, t_stack **b)
 {
 	(void)a;
+	(void)b;
 	printf("simple");
 }

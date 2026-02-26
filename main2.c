@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rosvela <rosvela@student.42madrid.com      +#+  +:+       +#+        */
+/*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/02/25 13:43:17 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/02/26 23:35:07 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ int	main(int ac, char **av)
 	if (check_duplicates(data.stack_a, data.size))
 		free_and_exit(&data, NULL, 1);
 	/*Aqui envio la data a tu funcion ALBITA*/
-	//Hacer el get_disorder y guardarlo en data;
-	//choose_alg mandandole data.
+	data->disorder = get_disorder(data.stack_a, data.size);
+	choose_algorithm(&data);
 	// --- BLOQUE DE PRUEBA: BORRAR ANTES DE ENTREGAR ---
 	if (data.stack_a)
 	{
