@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 18:06:40 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/26 23:34:31 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/02/27 11:52:44 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,40 @@ static void	hard_code(t_stack **a, t_data *data)
 		sa((*a), data);
 }
 
+static void	send_to_algorithm(t_stack **a, t_stack **b, t_data *data)
+{
+	if (data->strategy == 1)
+		adaptive(a, b, data);
+	else if (data->strategy == 2)
+		simple(a, b, data);
+	else if (data->strategy == 3)
+		medium(a, b, data);
+	else if (data->strategy == 4)
+		complex(a, b, data);
+}
+
 void	choose_algorithm(t_data *data) //escoge algoritmo según flags
 {
 	t_stack	*a;
 	t_stack	*b;
 	
-	a = get_stack_a(data);
-	b = get_stack_b(data);
 	if (data->disorder == 0.0)
+		return ;
+	a = get_stack_a(data);
+	if (!a)
+		return ;
+	b = get_stack_b(data);
+	if (!b)
 	{
 		free_stack(&a);
-		free_stack(&b);
 		return ;
 	}
-	else if (data->size == 2)
+	if (data->size == 2)
 		sa(a, data);
 	else if (data->size == 3)
 		hard_code(&a, data);
-	else if (data->strategy == 1)
-		adaptive(&a, &b, data->disorder);
-	else if (data->strategy == 2)
-		simple(&a, &b);
-	else if (data->strategy == 3)
-		medium(&a, &b);
-	else if (data->strategy == 4)
-		complex(&a, &b);
+	else
+		send_to_algorithm(&a, &b, data);
 	free_stack(&a);
 	free_stack(&b);
 }
