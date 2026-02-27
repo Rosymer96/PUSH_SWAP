@@ -52,6 +52,11 @@ void	pb(t_data *data)
 
 int	main(int ac, char **av)
 {
+	t_data	data;
+	char	**nums_split;
+	int		i;
+	int		j;
+
 	if (ac < 2)
 		return (0);
 	init_data(&data);
@@ -80,9 +85,7 @@ int	main(int ac, char **av)
 	while (av[i])
 	{
 		if (is_flag(av[i]))
-		{
 			update_flag(&data, av[i]);
-		}
 		else
 		{
 			nums_split = ft_split(av[i], ' ');
