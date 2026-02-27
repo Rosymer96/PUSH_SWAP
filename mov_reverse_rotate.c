@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   mov_reverse_rotate.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 11:57:55 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/25 12:13:10 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/02/27 12:47:42 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	rra(t_stack **a, t_data *data)
 	rev_rotate(a);
 	write(1, "rra\n", 4);
 	data->stats.rra++;
+	data->stats.total++;
 }
 
 void	rrb(t_stack **b, t_data *data)
@@ -47,6 +48,7 @@ void	rrb(t_stack **b, t_data *data)
 	rev_rotate(b);
 	write(1, "rrb\n", 4);
 	data->stats.rrb++;
+	data->stats.total++;
 }
 
 void	rrr(t_stack **a, t_stack **b, t_data *data)
@@ -55,4 +57,5 @@ void	rrr(t_stack **a, t_stack **b, t_data *data)
 	rev_rotate(b);
 	write(1, "rrr\n", 4);
 	data->stats.rrr++;
+	data->stats.total++;
 }

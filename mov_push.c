@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   mov_push.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 10:43:49 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/25 13:43:54 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/02/27 12:47:25 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	pa(t_stack **a, t_stack **b, t_data *data)
 	*a = tmp;
 	write(1, "pa\n", 3);
 	data->stats.pa++;
+	data->stats.total++;
 }
 
 void	pb(t_stack **a, t_stack **b, t_data *data)
@@ -38,4 +39,5 @@ void	pb(t_stack **a, t_stack **b, t_data *data)
 	*b = tmp; //primer nodo de a (antiguo) se convierte en top de b
 	write(1, "pb\n", 3);
 	data->stats.pb++;
+	data->stats.total++;
 }
