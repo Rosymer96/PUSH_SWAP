@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 13:28:02 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/26 23:34:51 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/02/27 11:52:32 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void				ft_lstadd_back(t_stack **lst, t_stack *new);
 t_stack				*ft_lstnew(int content, int index);
 t_stack				*ft_lstlast(t_stack *lst);
 //función algoritmo adaptativo
-void				adaptive(t_stack **a, t_stack **b, double disorder);
+void				adaptive(t_stack **a, t_stack **b, t_data *data);
 //swap functions
 void				sa(t_stack *a, t_data *data);
 void				sb(t_stack *b, t_data *data);
@@ -94,9 +94,9 @@ void				rra(t_stack **a, t_data *data);
 void				rrb(t_stack **b, t_data *data);
 void				rrr(t_stack **a, t_stack **b, t_data *data);
 
-void				simple(t_stack **a, t_stack **b);
-void				medium(t_stack **a, t_stack **b);
-void				complex(t_stack **a, t_stack **b);
+void				simple(t_stack **a, t_stack **b, t_data *data);
+void				medium(t_stack **a, t_stack **b, t_data *data);
+void				complex(t_stack **a, t_stack **b, t_data *data);
 
 //Funciones de impresion en terminal
 size_t				ft_strlen(const char *str);
