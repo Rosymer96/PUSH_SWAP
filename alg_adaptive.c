@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	adaptive(t_data *data, t_stack **a, t_stack **b) //algoritmo adaptativo, escoge cuál se usa en función del índice de desorden
+void	adaptive(t_stack **a, t_stack **b, ) //algoritmo adaptativo, escoge cuál se usa en función del índice de desorden
 {
 	printf("adaptive: %f\n", data->disorder);
 	if (data->disorder == 0.0)

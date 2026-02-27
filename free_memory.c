@@ -41,18 +41,17 @@ void	free_split(char **words)
 	free(words);
 }
 
-void free_stack(t_stack **stack)
+void	free_stack(t_stack **stack)
 {
-	t_stack *tmp;
-	t_stack	*stack_node;
-	if (!stack)
-		return;
-	stack_node = *stack;
-	while (stack_node)
+	t_stack	*tmp;
+
+	//habria que porteger en caso este vacio el array o el primero nodo?
+	
+	while (*stack)
 	{
-		tmp = stack_node->next;
-		free(stack_node);
-		stack_node = tmp;
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
 	}
-	free(stack);
+	//deberiamos apuntarlo a nulo? si **stack fue creado con &stack no necesitamos hacer free pero si dejar *stack a NULL?;
 }
