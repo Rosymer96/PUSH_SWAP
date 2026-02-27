@@ -77,6 +77,11 @@ t_stack				*ft_lstnew(int content, int index);
 t_stack				*ft_lstlast(t_stack *lst);
 //función algoritmo adaptativo
 void				adaptive(t_data *data, double disorder);
+
+//funciones de algoritmo simple
+int					*get_lis_ind(t_data *data, int *lis_size);
+void				back_to_a(t_stack **a, t_stack **b, t_data *data);
+void				final_rot(t_stack **a, t_data *data);
 //swap functions
 void				sa(t_stack *a, t_data *data);
 void				sb(t_stack *b, t_data *data);
