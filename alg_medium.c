@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   medium.c                                           :+:      :+:    :+:   */
+/*   alg_medium.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rosvela <rosvela@student.42madrid.com      +#+  +:+       +#+        */
+/*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:54:44 by rosvela           #+#    #+#             */
-/*   Updated: 2026/02/25 13:54:49 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/02/27 11:52:49 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	medium(t_data *data, t_stack **a, t_stack **b)
+#include "push_swap.h"
+
+void	medium(t_stack **a, t_stack **b, t_data *data)
 {
 	(void)a;
+	(void)b;
 	printf("medium");
 }

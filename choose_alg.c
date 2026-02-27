@@ -6,74 +6,81 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 18:06:40 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/25 13:43:04 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/02/27 11:52:44 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-t_stack	**get_stack_a(t_data *data)
-//genera la lista que enviaremos al algoritmo
+static void	hard_code(t_stack **a, t_data *data)
 {
-	t_stack	*a;
-	t_stack	*node;
-	int		i;
-
-	a = NULL;
-	i = 0;
-	while (i < data->size)
+	if (data->disorder == 1)
 	{
-		node = ft_lstnew(data->stack_a[i], i);
-		//habria que liberar en caso de error;
-		printf("[%i]", node->number);
-		// necesitamos colocar & porque esta funcion espera un puntero doble **
-		ft_lstadd_back(&a, node);
-		i++;
+		sa((*a), data);
+		rra(a, data);
 	}
-	printf("\n");
-	return (a);
+	else if (data->disorder >= 0.6)
+	{
+		if ((*a)->number > (*a)->next->number)
+			ra(a, data);
+		else
+			rra(a, data);
+	}
+	else if (data->disorder <= 0.6)
+		sa((*a), data);
+}
+
+static void	send_to_algorithm(t_stack **a, t_stack **b, t_data *data)
+{
+	if (data->strategy == 1)
+		adaptive(a, b, data);
+	else if (data->strategy == 2)
+		simple(a, b, data);
+	else if (data->strategy == 3)
+		medium(a, b, data);
+	else if (data->strategy == 4)
+		complex(a, b, data);
 }
 
 void	choose_algorithm(t_data *data) //escoge algoritmo según flags
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
-
-	stack_a = get_stack_a(data);
-	if (!stack_a)
-		return;
-	stack_b = NULL;
-	if (data->strategy == 1)
-		adaptive(data, &stack_a, &stack_b);
-	else if (data->strategy == 2)
-		simple(data, &stack_a, &stack_b);
-	else if (data->strategy == 3)
-		medium(data, &stack_a, &stack_b);
-	else if (data->strategy == 4)
-		complex(data, &stack_a, &stack_b);
-
-	//Liberamos los stacks despues del algoritmo:
-	free_stack(&stack_a);
-	free_stack(&stack_b);
+	t_stack	*a;
+	t_stack	*b;
+	
+	if (data->disorder == 0.0)
+		return ;
+	a = get_stack_a(data);
+	if (!a)
+		return ;
+	b = get_stack_b(data);
+	if (!b)
+	{
+		free_stack(&a);
+		return ;
+	}
+	if (data->size == 2)
+		sa(a, data);
+	else if (data->size == 3)
+		hard_code(&a, data);
+	else
+		send_to_algorithm(&a, &b, data);
+	free_stack(&a);
+	free_stack(&b);
 }
 
-//testea el código
 /*
 static void	init_data(t_data *data)
 {
-    data->size = 5;
+    data->size = 3;
     data->stack_a = malloc(sizeof(int) * data->size);
     if (!data->stack_a)
         return ;
-    data->stack_a[0] = 1;
-    data->stack_a[1] = 2;
+    data->stack_a[0] = 2;
+    data->stack_a[1] = 1;
     data->stack_a[2] = 3;
-    data->stack_a[3] = 87;
-	data->stack_a[4] = 23;
     data->strategy = 0;
     data->bench_mode = 0;
-    data->disorder = 0.0;
+    data->disorder = get_disorder(data->stack_a, data->size);
 }
 
 #include <stdio.h>
@@ -83,6 +90,7 @@ int	main(void)
 	t_data	data;
 
 	init_data(&data);
+	printf("disorder: %f\n", data.disorder);
 	choose_algorithm(&data);
 	return (0);
 }*/

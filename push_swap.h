@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 13:28:02 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/25 13:47:55 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/02/27 11:52:32 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_stack
 // Gestion de memoria y salida en caso de error
 void				free_and_exit(t_data *data, char **nums_split, int status);
 void				free_split(char **words);
-void 				free_stack(t_stack **stack);
+void				free_stack(t_stack **stack);
 //Parseo y flags
 int					is_flag(char *arg);
 void				update_flag(t_data *data, char *arg);
@@ -71,13 +71,13 @@ void				choose_algorithm(t_data *data);
 //saca el indice de desorden
 double				get_disorder(int *a, int size);
 //generan la estructura con la que trabajamos luego
-t_stack				**get_stack_a(t_data *data);
+t_stack				*get_stack_a(t_data *data);
+t_stack				*get_stack_b(t_data *data);
 void				ft_lstadd_back(t_stack **lst, t_stack *new);
 t_stack				*ft_lstnew(int content, int index);
 t_stack				*ft_lstlast(t_stack *lst);
 //función algoritmo adaptativo
-void				adaptive(t_data *data, double disorder);
-
+void				adaptive(t_stack **a, t_stack **b, t_data *data);
 //funciones de algoritmo simple
 int					*get_lis_ind(t_data *data, int *lis_size);
 void				back_to_a(t_stack **a, t_stack **b, t_data *data);
@@ -98,9 +98,9 @@ void				rra(t_stack **a, t_data *data);
 void				rrb(t_stack **b, t_data *data);
 void				rrr(t_stack **a, t_stack **b, t_data *data);
 
-void				simple(t_stack **a);
-void				medium(t_stack **a);
-void				complex(t_stack **a);
+void				simple(t_stack **a, t_stack **b, t_data *data);
+void				medium(t_stack **a, t_stack **b, t_data *data);
+void				complex(t_stack **a, t_stack **b, t_data *data);
 
 //Funciones de impresion en terminal
 size_t				ft_strlen(const char *str);
