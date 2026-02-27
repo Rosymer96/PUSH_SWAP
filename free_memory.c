@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_memory.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rosvela <rosvela@student.42madrid.com>     +#+  +:+       +#+        */
+/*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:46:53 by rosvela           #+#    #+#             */
-/*   Updated: 2026/02/25 13:46:53 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/02/26 23:34:42 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,10 @@ void	free_split(char **words)
 	}
 	free(words);
 }
-
 void	free_stack(t_stack **stack)
 {
 	t_stack	*tmp;
-
 	//habria que porteger en caso este vacio el array o el primero nodo?
-	
 	while (*stack)
 	{
 		tmp = (*stack)->next;
