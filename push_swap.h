@@ -82,6 +82,7 @@ void				adaptive(t_stack **a, t_stack **b, t_data *data);
 int					*get_lis_ind(t_data *data, int *lis_size);
 void				back_to_a(t_stack **a, t_stack **b, t_data *data);
 void				final_rot(t_stack **a, t_data *data);
+ int get_len_a(t_stack *a);
 //swap functions
 void				sa(t_stack *a, t_data *data);
 void				sb(t_stack *b, t_data *data);

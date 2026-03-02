@@ -53,17 +53,25 @@ void	choose_algorithm(t_data *data) //escoge algoritmo según flags
 	if (!a)
 		return ;
 	b = get_stack_b(data);
-	if (!b)
+	/*if (!b)
 	{
 		free_stack(&a);
 		return ;
-	}
+	}*/
 	if (data->size == 2)
 		sa(a, data);
 	else if (data->size == 3)
 		hard_code(&a, data);
 	else
 		send_to_algorithm(&a, &b, data);
+
+	t_stack *tmp;
+	tmp = a;
+	while (tmp)
+	{
+		printf("[%i]", tmp->number);
+		tmp = tmp->next;
+	}
 	free_stack(&a);
 	free_stack(&b);
 }

@@ -80,10 +80,8 @@ double	get_disorder(int *a, int size) //mide el índice de desorden
 		while (j < size)
 		{
 			pairs++;
-			printf("pairs: %i\n", pairs);
 			if (a[i] > a[j])
 				mistakes++;
-			printf("mistakes: %i\n", mistakes);
 			j++;
 		}
 		i++;

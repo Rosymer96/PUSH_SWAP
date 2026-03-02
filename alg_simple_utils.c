@@ -10,6 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
+static int find_min_pos(t_stack *a)
+{
+    int min_val;
+    int min_pos;
+    int i;
+
+    min_val = a->number;
+    min_pos = 0;
+    i = 0;
+    while (a)
+    {
+        if (a->number < min_val)
+        {
+            min_val = a->number;
+            min_pos = i;
+        }
+        a = a->next;
+        i++;
+    }
+    return (min_pos);
+
+}
+
 static int	find_pos_target(t_stack *a, int num_b)
 {
 	t_stack	*tmp;
@@ -23,7 +48,7 @@ static int	find_pos_target(t_stack *a, int num_b)
 	i = 0;
 	while (tmp)
 	{
-		if ((tmp->number > num_b) && (a->number < num_b_next))
+		if ((tmp->number > num_b) && (tmp->number < num_b_next))
 		{
 			num_b_next = tmp->number;
 			num_b_next_pos = i;
@@ -38,7 +63,7 @@ static int	find_pos_target(t_stack *a, int num_b)
 	return (num_b_next_pos);
 }
 
-static int get_len_a(t_stack *a)
+ int get_len_a(t_stack *a)
 {
 	int i;
 
@@ -84,29 +109,6 @@ void	back_to_a(t_stack **a, t_stack **b, t_data *data)
 		}
 		pa(a, b, data);
 	}
-}
-
-static int find_min_pos(t_stack *a)
-{
-	int min_val;
-	int min_pos;
-	int i;
-
-	min_val = a->number;
-	min_pos = 0;
-	i = 0;
-	while (a)
-	{
-		if (a->number < min_val)
-		{
-			min_val = a->number;
-			min_pos = i;
-		}
-		a = a->next;
-		i++;
-	}
-	return (min_pos);
-
 }
 
 void final_rot(t_stack **a, t_data *data)

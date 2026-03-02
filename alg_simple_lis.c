@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
 static void complete_lis_table(int *stack_a, int size, int *lengths, int *prev_pos)
 {
 	int	i;

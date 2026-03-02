@@ -21,7 +21,6 @@ t_stack	*ft_lstnew(int content, int index)
 		return (NULL);
 	node->number = content;
 	node->index = index;
-	node->keep = 0;
 	node->next = NULL;
 	return (node);
 }

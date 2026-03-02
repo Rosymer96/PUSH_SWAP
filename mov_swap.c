@@ -31,6 +31,7 @@ void	sa(t_stack *a, t_data *data)
 	swap(a);
 	write(1, "sa\n", 3);
 	data->stats.sa++;
+	data->stats.total++;
 }
 
 void	sb(t_stack *b, t_data *data)
@@ -38,6 +39,7 @@ void	sb(t_stack *b, t_data *data)
 	swap(b);
 	write(1, "sb\n", 3);
 	data->stats.sb++;
+	data->stats.total++;
 }
 
 void	ss(t_stack *a, t_stack *b, t_data *data)
@@ -46,4 +48,5 @@ void	ss(t_stack *a, t_stack *b, t_data *data)
 	swap(b);
 	write(1, "ss\n", 3);
 	data->stats.ss++;
+	data->stats.total++;
 }
