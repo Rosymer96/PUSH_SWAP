@@ -79,10 +79,10 @@ t_stack				*ft_lstlast(t_stack *lst);
 //función algoritmo adaptativo
 void				adaptive(t_stack **a, t_stack **b, t_data *data);
 //funciones de algoritmo simple
-int					*get_lis_ind(t_data *data, int *lis_size);
-void				back_to_a(t_stack **a, t_stack **b, t_data *data);
-void				final_rot(t_stack **a, t_data *data);
  int get_len_a(t_stack *a);
+ int find_min_value(t_stack *a);
+ int find_min_pos(t_stack *a);
+ int get_position(t_stack *a, int value);
 //swap functions
 void				sa(t_stack *a, t_data *data);
 void				sb(t_stack *b, t_data *data);
