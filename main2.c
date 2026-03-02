@@ -55,57 +55,36 @@ int	main(int ac, char **av)
 	t_data	data;
 	char	**nums_split;
 	int		i;
-	int		j;
-
+	
 	if (ac < 2)
-		return (0);
-	init_data(&data);
-	i = 1;
-	/* Mientras que comiencen con -- se va actualizando tanto el algoritmo y el bench ya que si hay varios algoritmos se va a coger el ultimo siempre */
-	/*
-    while(av[i] && is_flag(av[i]))
-    {
-        update_flag(&data, av[i]);
-        i++;
-    }
-    //Si solo hay flags termina sin devolver nadita
-    if(!av[i])
-        return (0);
-    while (av[i])
-    {
-        nums_split = ft_split(av[i], ' ');
-        if (!nums_split)
-        free_and_exit(&data, NULL, 1);
-    if (!process_num(nums_split, &data))
-    free_and_exit(&data, nums_split, 1);
-    free_split(nums_split);
-    i++;
-    }
-    */
-	while (av[i])
-	{
-		if (is_flag(av[i]))
-			update_flag(&data, av[i]);
-		else
-		{
-			nums_split = ft_split(av[i], ' ');
-			if (!nums_split)
-				free_and_exit(&data, NULL, 1);
-			if (!process_num(nums_split, &data))
-				free_and_exit(&data, nums_split, 1);
-			free_split(nums_split);
-		}
-		i++;
-	}
-	if (data.size == 0)
-		free_and_exit(&data, NULL, 1);
-	if (check_duplicates(data.stack_a, data.size))
-		free_and_exit(&data, NULL, 1);
-	/*Aqui envio la data a tu funcion ALBITA*/
-	data->disorder = get_disorder(data.stack_a, data.size);
-	choose_algorithm(&data);
-	// --- BLOQUE DE PRUEBA: BORRAR ANTES DE ENTREGAR ---
-	if (data.stack_a)
+	return (0);
+init_data(&data);
+i = 1;
+while (av[i])
+{
+	if (is_flag(av[i]))
+	update_flag(&data, av[i]);
+else
+{
+	nums_split = ft_split(av[i], ' ');
+	if (!nums_split)
+	free_and_exit(&data, NULL, 1);
+if (!process_num(nums_split, &data))
+free_and_exit(&data, nums_split, 1);
+free_split(nums_split);
+}
+i++;
+}
+if (data.size == 0)
+free_and_exit(&data, NULL, 1);
+if (check_duplicates(data.stack_a, data.size))
+free_and_exit(&data, NULL, 1);
+/*Aqui envio la data a tu funcion ALBITA*/
+data.disorder = get_disorder(data.stack_a, data.size);
+choose_algorithm(&data);
+// --- BLOQUE DE PRUEBA: BORRAR ANTES DE ENTREGAR ---
+/*if (data.stack_a)
+	int		j;
 	{
 		j = 0;
 		printf("\n--- DEBUG DATA ---\n");
@@ -120,7 +99,7 @@ int	main(int ac, char **av)
 		}
 		printf("\n------------------\n\n");
 	}
-	// ------------------------------------------------
+	// ------------------------------------------------*/
 	if (data.bench_mode)
 		print_benchmark(&data);
 	free_and_exit(&data, NULL, 0);

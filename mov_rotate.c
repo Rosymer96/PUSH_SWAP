@@ -31,6 +31,7 @@ void	ra(t_stack **a, t_data *data)
 	rotate(a);
 	write(1, "ra\n", 3);
 	data->stats.ra++;
+	data->stats.total++;
 }
 
 void	rb(t_stack **b, t_data *data)
@@ -38,6 +39,7 @@ void	rb(t_stack **b, t_data *data)
 	rotate(b);
 	write(1, "rb\n", 3);
 	data->stats.rb++;
+	data->stats.total++;
 }
 
 void	rr(t_stack **a, t_stack **b, t_data *data)
@@ -48,4 +50,5 @@ void	rr(t_stack **a, t_stack **b, t_data *data)
 	rotate(b);
 	write(1, "rr\n", 3);
 	data->stats.rr++;
+	data->stats.total++;
 }

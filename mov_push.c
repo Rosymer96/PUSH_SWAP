@@ -24,6 +24,7 @@ void	pa(t_stack **a, t_stack **b, t_data *data)
 	*a = tmp;
 	write(1, "pa\n", 3);
 	data->stats.pa++;
+	data->stats.total++;
 }
 
 void	pb(t_stack **a, t_stack **b, t_data *data)
@@ -38,4 +39,5 @@ void	pb(t_stack **a, t_stack **b, t_data *data)
 	*b = tmp; //primer nodo de a (antiguo) se convierte en top de b
 	write(1, "pb\n", 3);
 	data->stats.pb++;
+	data->stats.total++;
 }

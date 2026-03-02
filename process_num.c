@@ -23,9 +23,12 @@ int	is_numeric(char *str)
 		return (0);
 	while (str[i])
 	{
-		if (str[i] < '0' || str[i] > '9')
-			return (0);
-		i++;
+		if (str[i] >= '0' && str[i] <= '9')
+            i++;
+        else if (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+            i++;
+        else
+            return (0);
 	}
 	return (1);
 }
@@ -37,6 +40,8 @@ long long	ft_atoll(char *str)
 
 	res = 0;
 	sign = 1;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+        str++;
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')

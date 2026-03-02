@@ -12,6 +12,30 @@
 
 #include "push_swap.h"
 
+static void	hard_code_3(t_stack **a, t_data *data)
+{
+	int first = (*a)->number;
+	int second = (*a)->next->number;
+	int third = (*a)->next->next->number;
+
+	if (first > second && second < third && first < third)
+		sa((*a), data); // Caso: 2 1 3
+	else if (first > second && second > third)
+	{
+		sa((*a), data); // Caso: 3 2 1
+		rra(a, data);
+	}
+	else if (first > second && second < third && first > third)
+		ra(a, data);    // Caso: 3 1 2
+	else if (first < second && second > third && first < third)
+	{
+		sa((*a), data); // Caso: 1 3 2
+		ra(a, data);
+	}
+	else if (first < second && second > third && first > third)
+		rra(a, data);   // Caso: 2 3 1
+}
+
 static void mark_index_lis(t_stack *a, int *lis_array, int lis_size)
 {
 	t_stack *tmp;
@@ -35,29 +59,39 @@ static void mark_index_lis(t_stack *a, int *lis_array, int lis_size)
 	}
 }
 
-static void push_non_lis(t_stack **a, t_stack **b, t_data data)
+static void push_non_lis(t_stack **a, t_stack **b, t_data *data)
 {
-	int	i;
-	int	size;
+    int size;
+    int rotations;
 
-	i = 0;
-	size = data->size;
-	while (i < size)
-	{
-		if ((*a)->index != -1)
-			pb(a, b, data);
-		else
-			ra(a, data);
-		i++;
-	}
+    size = get_len_a(*a);
+    rotations = size;
+    //intentamos mandar solo los que NO son LIS
+    while (rotations > 0 && size > 3)
+    {
+        if ((*a)->index != -1)
+        {
+            pb(a, b, data);
+            size--;
+        }
+        else
+            ra(a, data);
+        rotations--;
+    }
+    // si aún sobran (>3), mandamos lo que sea para desbloquear
+    while (size > 3)
+    {
+        pb(a, b, data);
+        size--;
+    }
 }
 
-void	alg_simple(t_data *data, t_stack **a, t_stack **b)
+void	simple(t_stack **a, t_stack **b, t_data *data)
 {
 	int *lis_array;
 	int lis_size;
 
-	lis_array = get_lis_ind(data->stack_a, data->size, &lis_size);
+	lis_array = get_lis_ind(data, &lis_size);
 
 	if (!lis_array) 
 		return ;
@@ -66,6 +100,7 @@ void	alg_simple(t_data *data, t_stack **a, t_stack **b)
 	free(lis_array);
 	//movemos los que no son de la LIS a b
 	push_non_lis(a, b, data);
+	hard_code_3(a, data);
 	//regreseamos a "a" en su orden correcto
 	back_to_a(a, b, data);
 	final_rot(a, data);

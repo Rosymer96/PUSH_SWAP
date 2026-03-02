@@ -34,6 +34,9 @@ t_stack	*get_stack_a(t_data *data)
 
 t_stack *get_stack_b(t_data *data)
 {
+	(void)data; // Evita el error de variable no usada
+    return (NULL);
+	/*
 	t_stack *b;
 	t_stack	*node;
 	int	i;
@@ -43,9 +46,9 @@ t_stack *get_stack_b(t_data *data)
 	while (i < data->size)
 	{
 		node = ft_lstnew(0, i);
-		printf("[%i]", node->number);
+		//printf("[%i]", node->number);
 		ft_lstadd_back(&b, node);
 		i++;
 	}
-	return (b);
+	return (b);*/
 }

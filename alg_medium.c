@@ -16,5 +16,6 @@ void	medium(t_stack **a, t_stack **b, t_data *data)
 {
 	(void)a;
 	(void)b;
+	printf("%s\n", (char *)data->stack_a);
 	printf("medium");
 }
