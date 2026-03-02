@@ -12,97 +12,66 @@
 
 #include "push_swap.h"
 
-static void	hard_code_3(t_stack **a, t_data *data)
+void	sort_three(t_stack **a, t_data *data)
 {
-	int first = (*a)->number;
-	int second = (*a)->next->number;
-	int third = (*a)->next->next->number;
+	int	f; 
+	int	s; 
+	int	t; 
 
-	if (first > second && second < third && first < third)
-		sa((*a), data); // Caso: 2 1 3
-	else if (first > second && second > third)
+	if (get_len_a(*a) != 3)
+		return ;
+	f = (*a)->number;
+	s = (*a)->next->number;
+	t = (*a)->next->next->number;
+	if (f > s && f < t)
+		sa(*a, data);
+	else if (f > s && s > t)
 	{
-		sa((*a), data); // Caso: 3 2 1
+		sa(*a, data);
 		rra(a, data);
 	}
-	else if (first > second && second < third && first > third)
-		ra(a, data);    // Caso: 3 1 2
-	else if (first < second && second > third && first < third)
+	else if (f > s && s < t)
+		ra(a, data);
+	else if (f < s && s > t && f < t)
 	{
-		sa((*a), data); // Caso: 1 3 2
+		sa(*a, data);
 		ra(a, data);
 	}
-	else if (first < second && second > third && first > third)
-		rra(a, data);   // Caso: 2 3 1
+	else if (f < s && s > t && f > t)
+		rra(a, data);
 }
-
-static void mark_index_lis(t_stack *a, int *lis_array, int lis_size)
+static void move_to_top(t_stack **a, int min, t_data *data, int size)
 {
-	t_stack *tmp;
-	int	i;
+	int pos;
 
-	tmp = a;
-	while(tmp)
+	pos = get_position(*a, min);
+	if (pos <= size / 2)
 	{
-		tmp->index = 0;
-		i = 0;
-		while (i < lis_size)
-		{
-			if (tmp->number == lis_array[i])
-			{
-				tmp->index = -1; //marcamos los LIS
-				break;
-			}
-			i++;
-		}
-		tmp = tmp->next;
+		while ((*a)->number != min)
+			ra(a, data);
 	}
-}
-
-static void push_non_lis(t_stack **a, t_stack **b, t_data *data)
-{
-    int size;
-    int rotations;
-
-    size = get_len_a(*a);
-    rotations = size;
-    //intentamos mandar solo los que NO son LIS
-    while (rotations > 0 && size > 3)
-    {
-        if ((*a)->index != -1)
-        {
-            pb(a, b, data);
-            size--;
-        }
-        else
-            ra(a, data);
-        rotations--;
-    }
-    // si aún sobran (>3), mandamos lo que sea para desbloquear
-    while (size > 3)
-    {
-        pb(a, b, data);
-        size--;
-    }
+	else
+	{
+		while ((*a)->number != min)
+			rra(a, data);
+	}
 }
 
 void	simple(t_stack **a, t_stack **b, t_data *data)
 {
-	int *lis_array;
-	int lis_size;
+	int min;
+	int init_size;
 
-	lis_array = get_lis_ind(data, &lis_size);
-
-	if (!lis_array) 
-		return ;
-	mark_index_lis(*a, lis_array, lis_size);
-	//el array ya no es necesario
-	free(lis_array);
-	//movemos los que no son de la LIS a b
-	push_non_lis(a, b, data);
-	hard_code_3(a, data);
-	//regreseamos a "a" en su orden correcto
-	back_to_a(a, b, data);
-	final_rot(a, data);
+	init_size = data->size;
+	while (init_size > 3)
+	{
+		min = find_min_value(*a);
+		move_to_top(a, min, data, init_size);
+		pb(a, b, data);
+		init_size--;
+	}
+	sort_three(a, data);
+	while (*b)
+		pa(a, b, data);
 }
 
