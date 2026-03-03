@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 21:18:54 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/26 23:34:59 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/03 20:41:49 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ t_stack	*get_stack_a(t_data *data)
 	while (i < data->size)
 	{
 		node = ft_lstnew(data->stack_a[i], i);
-		printf("[%i]", node->number);
 		ft_lstadd_back(&a, node);
 		i++;
 	}
-	printf("\n");
 	return (a);
 }
 
@@ -42,8 +40,7 @@ t_stack *get_stack_b(t_data *data)
 	b = NULL;
 	while (i < data->size)
 	{
-		node = ft_lstnew(0, i);
-		printf("[%i]", node->number);
+		node = ft_lstnew(NULL, 0);
 		ft_lstadd_back(&b, node);
 		i++;
 	}
