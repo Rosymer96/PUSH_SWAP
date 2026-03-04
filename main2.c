@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/04 11:25:43 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/03/04 13:43:03 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,14 @@ void	pb(t_data *data)
     write(1, "pb\n", 3);
 }*/
 #include <stdio.h>
+
 int	main(int ac, char **av)
 {
 	t_data	data;
 	char	**nums_split;
 	int		i;
+	int		j;
+
 	if (ac < 2)
 		return (0);
 	init_data(&data);
@@ -81,7 +84,6 @@ int	main(int ac, char **av)
 		free_and_exit(&data, NULL, 1);
 	if (check_duplicates(data.stack_a, data.size))
 		free_and_exit(&data, NULL, 1);
-	/*Aqui envio la data a tu funcion ALBITA*/
 	data.disorder = get_disorder(data.stack_a, data.size);
 	choose_algorithm(&data);
 	// --- BLOQUE DE PRUEBA: BORRAR ANTES DE ENTREGAR ---

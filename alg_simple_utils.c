@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alg_simple_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rosvela <rosvela@student.42madrid.com      +#+  +:+       +#+        */
+/*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:54:35 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/04 11:41:13 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/03/04 13:34:14 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
