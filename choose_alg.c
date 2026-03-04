@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 18:06:40 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/04 11:39:07 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/03/04 13:00:00 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,7 @@ void	choose_algorithm(t_data *data) //escoge algoritmo según flags
 	a = get_stack_a(data);
 	if (!a)
 		return ;
-	b = get_stack_b(data);
-	/*if (!b)
-	{
-		free_stack(&a);
-		return ;
-	}*/
+	b = NULL;
 	if (data->size == 2)
 		sa(a, data);
 	else if (data->size == 3)
