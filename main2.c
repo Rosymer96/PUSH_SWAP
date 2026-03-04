@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/04 13:43:03 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/04 14:40:44 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,20 +80,23 @@ int	main(int ac, char **av)
 		}
 		i++;
 	}
+	if (data.strategy == 0)
+		data.strategy = 1;
 	if (data.size == 0)
 		free_and_exit(&data, NULL, 1);
 	if (check_duplicates(data.stack_a, data.size))
 		free_and_exit(&data, NULL, 1);
 	data.disorder = get_disorder(data.stack_a, data.size);
 	choose_algorithm(&data);
-	// --- BLOQUE DE PRUEBA: BORRAR ANTES DE ENTREGAR ---
-	/*if (data.stack_a)
+	 //--- BLOQUE DE PRUEBA: BORRAR ANTES DE ENTREGAR ---
+	if (data.stack_a)
 	{
 		j = 0;
 		printf("\n--- DEBUG DATA ---\n");
 		printf("Strategy:   %d\n", data.strategy);
 		printf("Bench Mode: %d\n", data.bench_mode);
 		printf("Stack Size: %d\n", data.size);
+		printf("Stack Disorder: %f\n", data.disorder);
 		printf("Stack A:    ");
 		while (j < data.size)
 		{
@@ -102,7 +105,7 @@ int	main(int ac, char **av)
 		}
 		printf("\n------------------\n\n");
 	}
-	// ------------------------------------------------*/
+	// ------------------------------------------------
 	if (data.bench_mode)
 		print_benchmark(&data);
 	free_and_exit(&data, NULL, 0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   benchmark_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rosvela <rosvela@student.42madrid.com      +#+  +:+       +#+        */
+/*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/04 11:24:20 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/03/04 14:29:50 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static void	print_disorder_fd(double disorder, int fd)
 	int_part = (int)disorder;
 	// sacamos los dos decimales restando y multiplicando
 	dec_part = (int)((disorder - int_part) * 100);
+	
 	// 4. IMPRESIÓN POR PARTES
 	ft_putnbr_fd(int_part, fd); // Imprime "49"
 	write(fd, ".", 1);          // Imprime el punto "."
