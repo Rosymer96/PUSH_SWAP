@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/04 14:29:50 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/04 17:35:10 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*get_strategy_name(int strategy)
 		return ("Medium");
 	return ("Complex");
 }
-
+/*
 static char	*get_complexity(t_data *data)
 {
 	if (data->strategy == 1)
@@ -31,6 +31,35 @@ static char	*get_complexity(t_data *data)
 			return ("O(n²)");
 		else if (0.2 <= data->disorder && data->disorder < 0.5)
 			return ("O(n√n)");
+		return ("O(n log n)");
+	}
+	if (data->strategy == 2)
+		return ("O(n²)");
+	if (data->strategy == 3)
+		return ("O(n√n)");
+	return ("O(n log n)");
+}*/
+
+static char	*get_complexity(t_data *data)
+{
+	if (data->strategy == 1)
+	{
+		if (data->size <= 5)
+			return ("O(n²)");
+		if (data->size <= 50)
+		{
+			if (data->disorder < 0.15)
+				return ("O(n²)");
+			else
+				return ("O(n√n)");
+		}
+		if (data->size <= 200)
+		{
+			if (data->disorder < 0.1)
+				return ("O(n²)");
+			else
+				return ("O(n√n)");
+		}
 		return ("O(n log n)");
 	}
 	if (data->strategy == 2)

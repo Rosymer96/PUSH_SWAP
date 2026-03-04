@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:54:44 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/04 14:23:11 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/04 17:08:00 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,10 @@ void	medium(t_stack **a, t_stack **b, t_data *data)
 {
 	int	k;
 
-	/*if (data->size <= 20)
-		k = 1;
-	else*/
-	k = (data->size / 20) + 7;
+	if (data->size <= 20)
+		k = 3;
+	else
+		k = (data->size / 20) + 7;
 	printf("ANTES:\n");
 	print_stack("A", *a);
 	print_stack("B", *b);
