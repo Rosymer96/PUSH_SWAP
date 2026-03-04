@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 21:18:54 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/03 20:41:49 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/04 11:31:14 by rosvela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,15 @@ t_stack	*get_stack_a(t_data *data)
 	return (a);
 }
 
-t_stack *get_stack_b(t_data *data)
+t_stack	*get_stack_b(t_data *data)
 {
-	t_stack *b;
-	t_stack	*node;
-	int	i;
+	//t_stack	*b;
+	//t_stack	*node;
+	//int		i;
 
+	(void)data; // Evita el error de variable no usada
+	return (NULL);
+	/*
 	i = 0;
 	b = NULL;
 	while (i < data->size)
@@ -44,5 +47,5 @@ t_stack *get_stack_b(t_data *data)
 		ft_lstadd_back(&b, node);
 		i++;
 	}
-	return (b);
+	return (b);*/
 }
