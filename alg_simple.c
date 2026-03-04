@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:54:35 by rosvela           #+#    #+#             */
-/*   Updated: 2026/02/27 11:52:48 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:40:05 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	sort_three(t_stack **a, t_data *data)
 {
-	int	f; 
-	int	s; 
-	int	t; 
+	int	f;
+	int	s;
+	int	t;
 
 	if (get_len_a(*a) != 3)
 		return ;
@@ -40,9 +40,10 @@ void	sort_three(t_stack **a, t_data *data)
 	else if (f < s && s > t && f > t)
 		rra(a, data);
 }
-static void move_to_top(t_stack **a, int min, t_data *data, int size)
+
+static void	move_to_top(t_stack **a, int min, t_data *data, int size)
 {
-	int pos;
+	int	pos;
 
 	pos = get_position(*a, min);
 	if (pos <= size / 2)
@@ -59,8 +60,8 @@ static void move_to_top(t_stack **a, int min, t_data *data, int size)
 
 void	simple(t_stack **a, t_stack **b, t_data *data)
 {
-	int min;
-	int init_size;
+	int	min;
+	int	init_size;
 
 	init_size = data->size;
 	while (init_size > 3)

@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 13:28:02 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/04 11:26:39 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/03/04 13:48:38 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@
 
 typedef struct s_stats
 {
-	int				sa;
-	int				sb;
-	int				ss;
-	int				pa;
-	int				pb;
-	int				ra;
-	int				rb;
-	int				rr;
-	int				rra;
-	int				rrb;
-	int				rrr;
-	int				total;
-}					t_stats;
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+	int	total;
+}		t_stats;
 
 typedef struct s_data
 {

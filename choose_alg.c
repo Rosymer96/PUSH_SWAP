@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 18:06:40 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/04 13:00:00 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:41:45 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	choose_algorithm(t_data *data) //escoge algoritmo según flags
 	else
 		send_to_algorithm(&a, &b, data);
 	/*Prueba de numeros ordenados*/
-	t_stack *tmp;
+	t_stack	*tmp;
 	tmp = a;
 	while (tmp)
 	{
