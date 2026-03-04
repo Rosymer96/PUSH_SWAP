@@ -41,6 +41,8 @@ typedef struct s_data
 	t_stats			stats;
 	int				bench_mode;
 	double			disorder;
+	int				*lis_array;
+	int				lis_size;
 }					t_data;
 
 typedef struct s_stack
