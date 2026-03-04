@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 18:06:40 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/27 11:52:44 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/04 11:39:07 by rosvela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,32 @@ void	choose_algorithm(t_data *data) //escoge algoritmo según flags
 {
 	t_stack	*a;
 	t_stack	*b;
-	
+
 	if (data->disorder == 0.0)
 		return ;
 	a = get_stack_a(data);
 	if (!a)
 		return ;
 	b = get_stack_b(data);
-	if (!b)
+	/*if (!b)
 	{
 		free_stack(&a);
 		return ;
-	}
+	}*/
 	if (data->size == 2)
 		sa(a, data);
 	else if (data->size == 3)
 		hard_code(&a, data);
 	else
 		send_to_algorithm(&a, &b, data);
+	/*Prueba de numeros ordenados*/
+	t_stack *tmp;
+	tmp = a;
+	while (tmp)
+	{
+		printf("[%i]", tmp->number);
+		tmp = tmp->next;
+	}
 	free_stack(&a);
 	free_stack(&b);
 }

@@ -6,7 +6,7 @@
 /*   By: rosvela <rosvela@student.42madrid.com      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/02/25 13:45:56 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/03/04 11:24:20 by rosvela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	print_disorder_fd(double disorder, int fd)
 	dec_part = (int)((disorder - int_part) * 100);
 	// 4. IMPRESIÓN POR PARTES
 	ft_putnbr_fd(int_part, fd); // Imprime "49"
-	write(fd, ".", 1); // Imprime el punto "."
+	write(fd, ".", 1);          // Imprime el punto "."
 	// imprimos el 0 para que no salga "49.5" en vez de "49.05".
 	if (dec_part < 10)
 		write(fd, "0", 1);
@@ -98,7 +98,7 @@ void	print_benchmark(t_data *data)
 	write(2, "%\n", 2);
 	write(2, "[bench] strategy:  ", 19);
 	write(2, get_strategy_name(data->strategy),
-		ft_strlen(get_strategy_name(data->strategy)));
+			ft_strlen(get_strategy_name(data->strategy)));
 	write(2, " / ", 3);
 	write(2, get_complexity(data), ft_strlen(get_complexity(data)));
 	write(2, "\n", 1);

@@ -6,7 +6,7 @@
 /*   By: rosvela <rosvela@student.42madrid.com      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/02/25 13:46:18 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/03/04 11:26:02 by rosvela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@ int	is_numeric(char *str)
 		return (0);
 	while (str[i])
 	{
-		if (str[i] < '0' || str[i] > '9')
+		if (str[i] >= '0' && str[i] <= '9')
+			i++;
+		else if (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+			i++;
+		else
 			return (0);
-		i++;
 	}
 	return (1);
 }
@@ -37,6 +40,8 @@ long long	ft_atoll(char *str)
 
 	res = 0;
 	sign = 1;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
