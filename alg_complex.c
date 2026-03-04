@@ -34,17 +34,30 @@ static void mark_index_lis(t_stack *a, int *lis_array, int lis_size)
 		tmp = tmp->next;
 	}
 }
+
+static int	is_in_lis(int index, t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->lis_size)
+	{
+		if (data->lis_size[i] == index)
+			return (1)
+		i++;
+	}
+	return (0);
+}
 //movemos los que no son LIS a B
 static void push_non_lis(t_stack **a, t_stack **b, t_data *data)
 {
-	int i;
-    int size;
+	int medium_idx;
 
-    i = 0;
-	size = data->size;
-	while (i < size)
+	medium_idx = data->size / 2;
+
+	while (get_len_a(*a) > data->lis_size)
 	{
-		if ((*a)->index != -1)
+		if (is_in_lis(data->stack_a))
 			pb(a, b, data);
 		else
 			ra(a, data);
@@ -54,16 +67,16 @@ static void push_non_lis(t_stack **a, t_stack **b, t_data *data)
 
 void	complex(t_stack **a, t_stack **b, t_data *data)
 {
-	int *lis_array;
-	int lis_size;
+	/*int *lis_array;
+	int lis_size;*/
 
-	lis_array = get_lis_ind(data, &lis_size);
+	data->lis_array = get_lis_ind(data, data->lis_size);
 
-	if (!lis_array) 
-		return ;
-	mark_index_lis(*a, lis_array, lis_size);
+	if (!data->lis_array) 
+		//liberar data return ;
+	//no es necesario mark_index_lis(*a, data->lis_array, data->lis_size);
 	//el array ya no es necesario
-	free(lis_array);
+	//free(lis_array);
 	//movemos los que no son de la LIS a b
 	push_non_lis(a, b, data);
 	//calcular greedy para regresar a A;
