@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/02/26 23:34:37 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/03 23:12:08 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,8 @@ double	get_disorder(int *a, int size) //mide el índice de desorden
 		while (j < size)
 		{
 			pairs++;
-			printf("pairs: %i\n", pairs);
 			if (a[i] > a[j])
 				mistakes++;
-			printf("mistakes: %i\n", mistakes);
 			j++;
 		}
 		i++;
