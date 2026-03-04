@@ -6,12 +6,22 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:54:44 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/04 13:49:36 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/04 14:23:11 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static void print_stack(char *name, t_stack *stack)
+{
+	printf("%s: ", name);
+	while (stack)
+	{
+		printf("[%d|%d] ", stack->number, stack->index);
+		stack = stack->next;
+	}
+	printf("\n");
+}
 static void	push_to_stack_b(t_stack **a, t_stack **b, int k, t_data *data)
 {
 	int	i;
@@ -109,21 +119,11 @@ void	medium(t_stack **a, t_stack **b, t_data *data)
 	print_stack("A", *a);
 	print_stack("B", *b);
 }
-/*
+
 #include <stdlib.h>
 #include <stdio.h>
 
-void print_stack(char *name, t_stack *stack)
-{
-	printf("%s: ", name);
-	while (stack)
-	{
-		printf("[%d|%d] ", stack->number, stack->index);
-		stack = stack->next;
-	}
-	printf("\n");
-}
-
+/*
 void free_stack(t_stack **stack)
 {
 	t_stack *tmp;

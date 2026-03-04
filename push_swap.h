@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 13:28:02 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/04 13:48:38 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/04 14:20:53 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void				adaptive(t_stack **a, t_stack **b, t_data *data);
 //funciones de algoritmo simple
 int					get_len_a(t_stack *a);
 int					find_min_value(t_stack *a);
-int					find_min_pos(t_stack *a);
+//int					find_min_pos(t_stack *a);
 int					get_position(t_stack *a, int value);
 //swap functions
 void				sa(t_stack *a, t_data *data);
