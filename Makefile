@@ -15,10 +15,10 @@ HEADER  = push_swap.h
 CC      = cc
 FLAGS   = -Wall -Wextra -Werror
 
-SRC     = main2.c alg_adaptive.c alg_simple.c alg_simple_lis.c \
-			alg_simple_utils.c alg_medium.c alg_complex.c benchmark_utils.c \
+SRC     = main2.c alg_adaptive.c alg_medium.c alg_simple.c\
+			alg_complex_utils.c alg_complex_lis.c alg_complex.c benchmark_utils.c \
 			choose_alg.c free_memory.c ft_split.c list_functions.c mov_push.c \
-			mov_reverse_rotate.c mov_rotate.c mov_swap.c parser_args.c \
+			mov_reverse_rotate.c mov_rotate.c mov_swap.c parser_args.c pos_utils.c \
 			process_num.c stack_creator.c utils.c 
 
 

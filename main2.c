@@ -18,7 +18,7 @@ static void	init_data(t_data *data)
 	data->size = 0;
 	data->strategy = 0;
 	data->bench_mode = 0;
-	data->disorder = 0.933334;
+	data->disorder = 0.0;
 	data->stats.sa = 0;
 	data->stats.sb = 0;
 	data->stats.ss = 0;
@@ -55,36 +55,38 @@ int	main(int ac, char **av)
 	t_data	data;
 	char	**nums_split;
 	int		i;
+	//int		j;
 	
 	if (ac < 2)
 	return (0);
-init_data(&data);
-i = 1;
-while (av[i])
-{
-	if (is_flag(av[i]))
-	update_flag(&data, av[i]);
-else
-{
-	nums_split = ft_split(av[i], ' ');
-	if (!nums_split)
-	free_and_exit(&data, NULL, 1);
-if (!process_num(nums_split, &data))
-free_and_exit(&data, nums_split, 1);
-free_split(nums_split);
-}
-i++;
-}
-if (data.size == 0)
-free_and_exit(&data, NULL, 1);
-if (check_duplicates(data.stack_a, data.size))
-free_and_exit(&data, NULL, 1);
-/*Aqui envio la data a tu funcion ALBITA*/
-data.disorder = get_disorder(data.stack_a, data.size);
-choose_algorithm(&data);
-// --- BLOQUE DE PRUEBA: BORRAR ANTES DE ENTREGAR ---
-/*if (data.stack_a)
-	int		j;
+	init_data(&data);
+	i = 1;
+	while (av[i])
+	{
+		if (is_flag(av[i]))
+		update_flag(&data, av[i]);
+		else
+		{
+			nums_split = ft_split(av[i], ' ');
+			if (!nums_split)
+					free_and_exit(&data, NULL, 1);
+			if (!process_num(nums_split, &data))
+				free_and_exit(&data, nums_split, 1);
+			free_split(nums_split);
+		}
+		i++;
+	}
+	if (data.strategy == 0)
+		data.strategy = 1;
+	if (data.size == 0)
+		free_and_exit(&data, NULL, 1);
+	if (check_duplicates(data.stack_a, data.size))
+		free_and_exit(&data, NULL, 1);
+	/*Aqui envio la data a tu funcion ALBITA*/
+	data.disorder = get_disorder(data.stack_a, data.size);
+	choose_algorithm(&data);
+	// --- BLOQUE DE PRUEBA: BORRAR ANTES DE ENTREGAR ---
+	/*if (data.stack_a)
 	{
 		j = 0;
 		printf("\n--- DEBUG DATA ---\n");

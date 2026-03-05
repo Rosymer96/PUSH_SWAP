@@ -12,130 +12,60 @@
 
 #include "push_swap.h"
 
-static int find_min_pos(t_stack *a)
+static int	get_target(t_stack *a, int b_idx)
 {
-    int min_val;
-    int min_pos;
-    int i;
+	t_stack	*tmp_a;
+	int	target_idx;
+	int	target_pos;
 
-    min_val = a->number;
-    min_pos = 0;
-    i = 0;
-    while (a)
-    {
-        if (a->number < min_val)
-        {
-            min_val = a->number;
-            min_pos = i;
-        }
-        a = a->next;
-        i++;
-    }
-    return (min_pos);
-
-}
-
-static int	find_pos_target(t_stack *a, int num_b)
-{
-	t_stack	*tmp;
-	long	num_b_next;
-	int num_b_next_pos;
-	int 	i;
-
-	tmp = a;
-	num_b_next = 2147483648LL;
-	num_b_next_pos = 0;
-	i = 0;
-	while (tmp)
+	tmp_a = a;
+	target_idx = 2147483647;
+	target_pos = -1;
+	// 1. Buscamos el "mínimo superior"
+	while (tmp_a)
 	{
-		if ((tmp->number > num_b) && (tmp->number < num_b_next))
+		if (tmp_a->index > b_idx && tmp_a->index < target_idx)
 		{
-			num_b_next = tmp->number;
-			num_b_next_pos = i;
-
+			target_idx = tmp_a->index;
+			target_pos = tmp_a->pos;
 		}
-		i++;
-		tmp = tmp->next;
+		tmp_a = tmp_a->next;
 	}
-	// si no cambia es porque es el mas grande
-	if (num_b_next == 2147483648LL)
+	if (target_pos == -1)
 		return (find_min_pos(a));
-	return (num_b_next_pos);
+	return (target_pos);
 }
 
- int get_len_a(t_stack *a)
+void find_target(t_stack *a, t_stack *b)
 {
-	int i;
+	t_stack *tmp_b;
 
-	i = 0;
-	while (a)
+	tmp_b = b;
+	while (tmp_b)
 	{
-		i++;
-		a = a->next;
-	}
-	return (i);
-}
-
-void	back_to_a(t_stack **a, t_stack **b, t_data *data)
-{
-	int	num_b;
-	int pos_target;
-	int len_a;
-	int rra_n;
-
-	if (!a || !*a)
-		return ;
-	while (*b)
-	{
-		num_b = (*b)->number;
-		pos_target = find_pos_target(*a, num_b);
-		len_a = get_len_a(*a);
-		if (pos_target <= (len_a / 2))
-		{
-			while (pos_target > 0)
-			{
-				ra(a, data);
-				pos_target--;
-			}
-		}
-		else
-		{
-			rra_n = len_a - pos_target;
-			while (rra_n > 0)
-			{
-				rra(a, data);
-				rra_n--;
-			}
-		}
-		pa(a, b, data);
+		tmp_b->target_pos = get_target(a, tmp_b->index);
+		tmp_b = tmp_b->next;
 	}
 }
+
 
 void final_rot(t_stack **a, t_data *data)
 {
 	int pos_min;
-	int len_a;
-	int total_rra;
+	int	size_a;
 
-	if (!a || !*a)
-		return ;
+	set_position(*a);
+	size_a = get_lst_size(*a);
 	pos_min = find_min_pos(*a);
-	len_a = get_len_a(*a);
-	if (pos_min <= len_a /2)
+	if (pos_min <= size_a / 2)
 	{
-		while (pos_min > 0)
-		{
+		while (pos_min-- > 0)
 			ra(a, data);
-			pos_min--;
-		}
 	}
 	else
 	{
-		total_rra = len_a - pos_min;
-		while (total_rra > 0)
-		{
+		pos_min = size_a - pos_min;
+		while (pos_min -- > 0)
 			rra(a, data);
-			total_rra--;
-		}
 	}
 }
