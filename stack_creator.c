@@ -12,6 +12,22 @@
 
 #include "push_swap.h"
 
+static int	get_index(t_data *data, int nbr)
+{
+	int	index;
+	int	i;
+
+	index = 0;
+	i = 0;
+	while (i < data->size)
+	{
+		if (nbr > data->stack_a[i])
+			index++;
+		i++;
+	}
+	return (index);
+}
+
 t_stack	*get_stack_a(t_data *data)
 //genera la lista que enviaremos al algoritmo
 {
@@ -23,32 +39,9 @@ t_stack	*get_stack_a(t_data *data)
 	a = NULL;
 	while (i < data->size)
 	{
-		node = ft_lstnew(data->stack_a[i], i);
-		printf("[%i]", node->number);
+		node = ft_lstnew(data->stack_a[i], get_index(data, data->stack_a[i]), i);
 		ft_lstadd_back(&a, node);
 		i++;
 	}
-	printf("\n");
 	return (a);
-}
-
-t_stack *get_stack_b(t_data *data)
-{
-	(void)data; // Evita el error de variable no usada
-    return (NULL);
-	/*
-	t_stack *b;
-	t_stack	*node;
-	int	i;
-
-	i = 0;
-	b = NULL;
-	while (i < data->size)
-	{
-		node = ft_lstnew(0, i);
-		//printf("[%i]", node->number);
-		ft_lstadd_back(&b, node);
-		i++;
-	}
-	return (b);*/
 }
