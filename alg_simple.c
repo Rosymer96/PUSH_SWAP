@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:54:35 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/04 14:19:15 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/06 18:39:03 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,3 @@ void	simple(t_stack **a, t_stack **b, t_data *data)
 	while (*b)
 		pa(a, b, data);
 }
-
