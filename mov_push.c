@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 10:43:49 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/03 23:05:05 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:46:38 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	pb(t_stack **a, t_stack **b, t_data *data)
 
 	if (!*a)
 		return ;
-	tmp = *a; //guardo el primer nodo de a
-	*a = tmp->next; //modifico el top de a
-	tmp->next = *b; //primer nodo de a (antiguo) apunta al top de b
-	*b = tmp; //primer nodo de a (antiguo) se convierte en top de b
+	tmp = *a;
+	*a = tmp->next;
+	tmp->next = *b;
+	*b = tmp;
 	write(1, "pb\n", 3);
 	data->stats.pb++;
 	data->stats.total++;

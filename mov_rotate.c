@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 11:43:04 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/27 12:47:58 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:47:45 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static void	rotate(t_stack **lst)
 
 	if (!*lst || !(*lst)->next)
 		return ;
-	tmp = (*lst)->next; //guardo segundo nodo
-	last = ft_lstlast(*lst); //busco el último nodo
-	(*lst)->next = NULL; //desconecto primer nodo
-	last->next = *lst; //conecto primer nodo al último
-	*lst = tmp; //arreglo el head, apunto al segundo nodo
+	tmp = (*lst)->next;
+	last = ft_lstlast(*lst);
+	(*lst)->next = NULL;
+	last->next = *lst;
+	*lst = tmp;
 }
 
 void	ra(t_stack **a, t_data *data)

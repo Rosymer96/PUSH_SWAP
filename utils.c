@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/03 23:12:08 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:50:15 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-double	get_disorder(int *a, int size) //mide el índice de desorden
+double	get_disorder(int *a, int size)
 {
 	int	mistakes;
 	int	pairs;

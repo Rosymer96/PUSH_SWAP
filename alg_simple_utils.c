@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:54:35 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/04 14:19:41 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:38:33 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,6 @@ int	find_min_pos(t_stack *a)
 	}
 	return (min_pos);
 }
-/*
-int	find_min_value(t_stack *a)
-{
-	int	min;
-
-	min = a->number;
-	while (a)
-	{
-		if (a->number < min)
-			min = a->number;
-		a = a->next;
-	}
-	return (min);
-}*/
 
 int	get_len_a(t_stack *a)
 {
