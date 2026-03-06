@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/06 17:44:50 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/06 18:32:19 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,40 @@ static void	init_data(t_data *data)
 	data->stats.total = 0;
 }
 
+static void	parse_and_process(t_data *data, char **av)
+{
+	char	**nums_split;
+	int		i;
+
+	i = 1;
+	while (av[i])
+	{
+		if (is_flag(av[i]))
+				update_flag(data, av[i]);
+		else
+		{
+			nums_split = ft_split(av[i], ' ');
+			if (!nums_split)
+				free_and_exit(data, NULL, 1);
+			if (!process_num(nums_split, data))
+				free_and_exit(data, nums_split, 1);
+			free_split(nums_split);
+		}
+		i++;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_data	data;
-	char	**nums_split;
-	int		i;
+	//char	**nums_split;
+	//int		i;
 
 	if (ac < 2)
 		return (0);
 	init_data(&data);
-	i = 1;
+	parse_and_process(&data, av);
+	/*i = 1;
 	while (av[i])
 	{
 		if (is_flag(av[i]))
@@ -57,7 +81,7 @@ int	main(int ac, char **av)
 			free_split(nums_split);
 		}
 		i++;
-	}
+	}*/
 	if (data.strategy == 0)
 		data.strategy = 1;
 	if (data.size == 0)
