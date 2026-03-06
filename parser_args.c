@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 11:15:45 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/06 17:49:36 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/06 18:13:21 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,18 @@ int	is_flag(char *arg)
 	if (arg[0] == '-' && arg[1] == '-' && arg[2] != '\0')
 		return (1);
 	return (0);
+}
+
+static void	check_bench(t_data *data, char *arg)
+{
+	if (ft_strncmp(arg, "--bench", 8) == 0)
+	{
+		if (data->bench_mode != 0)
+			free_and_exit(data, NULL, 1);
+		data->bench_mode = 1;
+	}
+	else
+		free_and_exit(data, NULL, 1);
 }
 
 void	update_flag(t_data *data, char *arg)
@@ -45,14 +57,7 @@ void	update_flag(t_data *data, char *arg)
 			free_and_exit(data, NULL, 1);
 		data->strategy = 1;
 	}
-	else if (ft_strncmp(arg, "--bench", 8) == 0)
-	{
-		if (data->bench_mode != 0)
-			free_and_exit(data, NULL, 1);
-		data->bench_mode = 1;
-	}
-	else
-		free_and_exit(data, NULL, 1);
+	else check_bench(data, arg);
 }
 
 int	process_num(char **nums_split, t_data *data)
