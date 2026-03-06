@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/04 17:35:10 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:40:21 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,6 @@ static char	*get_strategy_name(int strategy)
 		return ("Medium");
 	return ("Complex");
 }
-/*
-static char	*get_complexity(t_data *data)
-{
-	if (data->strategy == 1)
-	{
-		if (data->disorder < 0.2)
-			return ("O(n²)");
-		else if (0.2 <= data->disorder && data->disorder < 0.5)
-			return ("O(n√n)");
-		return ("O(n log n)");
-	}
-	if (data->strategy == 2)
-		return ("O(n²)");
-	if (data->strategy == 3)
-		return ("O(n√n)");
-	return ("O(n log n)");
-}*/
 
 static char	*get_complexity(t_data *data)
 {
@@ -75,23 +58,17 @@ static void	print_disorder_fd(double disorder, int fd)
 	int	dec_part;
 
 	disorder = disorder * 100;
-	// sacamos la parte entera casteando
 	int_part = (int)disorder;
-	// sacamos los dos decimales restando y multiplicando
 	dec_part = (int)((disorder - int_part) * 100);
-	
-	// 4. IMPRESIÓN POR PARTES
-	ft_putnbr_fd(int_part, fd); // Imprime "49"
-	write(fd, ".", 1);          // Imprime el punto "."
-	// imprimos el 0 para que no salga "49.5" en vez de "49.05".
+	ft_putnbr_fd(int_part, fd);
+	write(fd, ".", 1);
 	if (dec_part < 10)
 		write(fd, "0", 1);
-	ft_putnbr_fd(dec_part, fd); // escribe el decimal
+	ft_putnbr_fd(dec_part, fd);
 }
 
 static void	print_ops_breakdown(t_data *data)
 {
-	// Swaps y Pushes
 	write(2, "[bench] sa: ", 12);
 	ft_putnbr_fd(data->stats.sa, 2);
 	write(2, "  sb: ", 6);
@@ -103,7 +80,6 @@ static void	print_ops_breakdown(t_data *data)
 	write(2, "  pb: ", 6);
 	ft_putnbr_fd(data->stats.pb, 2);
 	write(2, "\n", 1);
-	//  Rotates y Reverse Rotates (todo junto)
 	write(2, "[bench] ra: ", 12);
 	ft_putnbr_fd(data->stats.ra, 2);
 	write(2, "  rb: ", 6);

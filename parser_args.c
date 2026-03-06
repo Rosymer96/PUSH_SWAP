@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 11:15:45 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/04 14:40:35 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:49:36 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ void	update_flag(t_data *data, char *arg)
 	{
 		if (data->strategy != 0)
 			free_and_exit(data, NULL, 1);
-		data->strategy = 2; // O(n2) LIS
+		data->strategy = 2;
 	}
 	else if (ft_strncmp(arg, "--medium", 9) == 0)
 	{
 		if (data->strategy != 0)
 			free_and_exit(data, NULL, 1);
-		data->strategy = 3; // O(n*sqrt(n)) K-sort
+		data->strategy = 3;
 	}
 	else if (ft_strncmp(arg, "--complex", 10) == 0)
 	{
 		if (data->strategy != 0)
 			free_and_exit(data, NULL, 1);
-		data->strategy = 4; // O(n log n) Radix
+		data->strategy = 4;
 	}
 	else if (ft_strncmp(arg, "--adaptive", 9) == 0)
 	{
@@ -49,10 +49,10 @@ void	update_flag(t_data *data, char *arg)
 	{
 		if (data->bench_mode != 0)
 			free_and_exit(data, NULL, 1);
-		data->bench_mode = 1; // Activa modo benchmark
+		data->bench_mode = 1;
 	}
 	else
-		free_and_exit(data, NULL, 1); // Es potencialmente un número
+		free_and_exit(data, NULL, 1);
 }
 
 int	process_num(char **nums_split, t_data *data)

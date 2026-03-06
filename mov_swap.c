@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 10:45:55 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/27 12:48:13 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:48:09 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static void	swap(t_stack *lst)
 
 	if (!lst)
 		return ;
-	tmp = lst->number; //guardo el número del primer nodo de a
-	lst->number = (lst->next)->number; //el nº del primer nodo pasa a ser el segundo
-	(lst->next)->number = tmp; //el nº del segundo nodo pasa a ser el del primero (guardado)
-	tmp = lst->index; //lo mismo pero con el index
+	tmp = lst->number;
+	lst->number = (lst->next)->number;
+	(lst->next)->number = tmp;
+	tmp = lst->index;
 	lst->index = (lst->next)->index;
 	(lst->next)->index = tmp;
 }

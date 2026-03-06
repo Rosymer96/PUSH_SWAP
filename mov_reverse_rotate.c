@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 11:57:55 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/27 12:47:42 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:47:15 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ static void	rev_rotate(t_stack **lst)
 	t_stack	*last;
 	t_stack	*new_last;
 
-	if (!*lst || !(*lst)->next) //comprueba que no haya 0 o 1 nodo
+	if (!*lst || !(*lst)->next)
 		return ;
-	new_last = find_new_last(*lst); //encuentra el penúltimo nodo
-	last = new_last->next; //identifico último nodo
-	last->next = *lst; //conecto el último al principio de la lista
-	new_last->next = NULL; //el penúltimo nodo pasa a ser el último
-	*lst = last; //el top apunta al último nodo (ahora está delante)
+	new_last = find_new_last(*lst);
+	last = new_last->next;
+	last->next = *lst;
+	new_last->next = NULL;
+	*lst = last;
 }
 
 void	rra(t_stack **a, t_data *data)

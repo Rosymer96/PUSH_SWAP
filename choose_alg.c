@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 18:06:40 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/04 17:35:06 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:41:20 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	send_to_algorithm(t_stack **a, t_stack **b, t_data *data)
 		complex(a, b, data);
 }
 
-void	choose_algorithm(t_data *data) //escoge algoritmo según flags
+void	choose_algorithm(t_data *data)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -59,41 +59,6 @@ void	choose_algorithm(t_data *data) //escoge algoritmo según flags
 		hard_code(&a, data);
 	else
 		send_to_algorithm(&a, &b, data);
-	/*Prueba de numeros ordenados*/
-	t_stack	*tmp;
-	tmp = a;
-	while (tmp)
-	{
-		printf("[%i]", tmp->number);
-		tmp = tmp->next;
-	}
 	free_stack(&a);
 	free_stack(&b);
 }
-
-/*
-static void	init_data(t_data *data)
-{
-    data->size = 3;
-    data->stack_a = malloc(sizeof(int) * data->size);
-    if (!data->stack_a)
-        return ;
-    data->stack_a[0] = 2;
-    data->stack_a[1] = 1;
-    data->stack_a[2] = 3;
-    data->strategy = 0;
-    data->bench_mode = 0;
-    data->disorder = get_disorder(data->stack_a, data->size);
-}
-
-#include <stdio.h>
-
-int	main(void)
-{
-	t_data	data;
-
-	init_data(&data);
-	printf("disorder: %f\n", data.disorder);
-	choose_algorithm(&data);
-	return (0);
-}*/
