@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/06 18:32:19 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/06 18:39:08 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	parse_and_process(t_data *data, char **av)
 	while (av[i])
 	{
 		if (is_flag(av[i]))
-				update_flag(data, av[i]);
+			update_flag(data, av[i]);
 		else
 		{
 			nums_split = ft_split(av[i], ' ');

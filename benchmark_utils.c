@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/06 17:40:21 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/06 18:38:48 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	print_benchmark(t_data *data)
 	write(2, "%\n", 2);
 	write(2, "[bench] strategy:  ", 19);
 	write(2, get_strategy_name(data->strategy),
-			ft_strlen(get_strategy_name(data->strategy)));
+		ft_strlen(get_strategy_name(data->strategy)));
 	write(2, " / ", 3);
 	write(2, get_complexity(data), ft_strlen(get_complexity(data)));
 	write(2, "\n", 1);

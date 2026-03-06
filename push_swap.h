@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 13:28:02 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/06 17:56:10 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/06 18:39:05 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_stack
 	struct s_stack	*next;
 
 }					t_stack;
-
 
 void				free_and_exit(t_data *data, char **nums_split, int status);
 void				free_split(char **words);
