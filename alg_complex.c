@@ -131,8 +131,6 @@ void	complex(t_stack **a, t_stack **b, t_data *data)
 	t_stack *best_node;
 
 	data->lis_array = get_lis_ind(data);
-
-
 	if (!data->lis_array) 
 		free_and_exit(data, NULL, 1);
 	push_non_lis(a, b, data);

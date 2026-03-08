@@ -19,6 +19,8 @@ static void	init_data(t_data *data)
 	data->strategy = 0;
 	data->bench_mode = 0;
 	data->disorder = 0;
+	data->lis_array = NULL;
+	data->lis_size = 0;
 	data->stats.sa = 0;
 	data->stats.sb = 0;
 	data->stats.ss = 0;

@@ -16,10 +16,18 @@ void	free_and_exit(t_data *data, char **nums_split, int status)
 {
 	if (nums_split)
 		free_split(nums_split);
-	if (data && data->stack_a)
+	if (data)
 	{
-		free(data->stack_a);
-		data->stack_a = NULL;
+		if (data->stack_a)
+		{
+			free(data->stack_a);
+			data->stack_a = NULL;
+		}
+		if (data->lis_array)
+		{
+			free(data->lis_array);
+			data->lis_array = NULL;
+		}
 	}
 	if (status == 1)
 		write(2, "Error\n", 6);
