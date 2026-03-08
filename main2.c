@@ -59,29 +59,11 @@ static void	parse_and_process(t_data *data, char **av)
 int	main(int ac, char **av)
 {
 	t_data	data;
-	//char	**nums_split;
-	//int		i;
 
 	if (ac < 2)
 		return (0);
 	init_data(&data);
 	parse_and_process(&data, av);
-	/*i = 1;
-	while (av[i])
-	{
-		if (is_flag(av[i]))
-			update_flag(&data, av[i]);
-		else
-		{
-			nums_split = ft_split(av[i], ' ');
-			if (!nums_split)
-				free_and_exit(&data, NULL, 1);
-			if (!process_num(nums_split, &data))
-				free_and_exit(&data, nums_split, 1);
-			free_split(nums_split);
-		}
-		i++;
-	}*/
 	if (data.strategy == 0)
 		data.strategy = 1;
 	if (data.size == 0)

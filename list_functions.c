@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_stack	*ft_lstnew(int content, int index)
+t_stack	*ft_lstnew(int content, int index, int pos)
 {
 	t_stack	*node;
 
@@ -21,6 +21,7 @@ t_stack	*ft_lstnew(int content, int index)
 		return (NULL);
 	node->number = content;
 	node->index = index;
+	node->pos = pos;
 	node->next = NULL;
 	return (node);
 }

@@ -38,7 +38,7 @@ t_stack	*get_stack_a(t_data *data)
 	a = NULL;
 	while (i < data->size)
 	{
-		node = ft_lstnew(data->stack_a[i], get_index(data, data->stack_a[i]));
+		node = ft_lstnew(data->stack_a[i], get_index(data, data->stack_a[i]), i);
 		ft_lstadd_back(&a, node);
 		i++;
 	}
