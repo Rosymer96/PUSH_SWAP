@@ -73,6 +73,7 @@ t_stack				*get_stack_a(t_data *data);
 void				ft_lstadd_back(t_stack **lst, t_stack *new);
 t_stack				*ft_lstnew(int content, int index);
 t_stack				*ft_lstlast(t_stack *lst);
+int					get_lst_size(t_stack *stack);
 
 void				simple(t_stack **a, t_stack **b, t_data *data);
 void				medium(t_stack **a, t_stack **b, t_data *data);
