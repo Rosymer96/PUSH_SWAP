@@ -52,19 +52,6 @@ static int	find_max_pos(t_stack *b)
 	}
 	return (pos);
 }
-/*
-static int	stack_size(t_stack *b)
-{
-	int	i;
-
-	i = 0;
-	while (b)
-	{
-		b = b->next;
-		i++;
-	}
-	return (i);
-}*/
 
 static void	back_to_stack_a(t_stack **a, t_stack **b, t_data *data)
 {
@@ -77,7 +64,6 @@ static void	back_to_stack_a(t_stack **a, t_stack **b, t_data *data)
 		tmp = *b;
 		while (tmp->index != data->size - 1 - i)
 			tmp = tmp->next;
-		//if (find_max_pos(*b) <= (stack_size(*b) / 2))
 		if (find_max_pos(*b) <= (get_lst_size(*b) / 2))
 		{
 			while ((*b)->index != tmp->index)
