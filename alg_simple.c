@@ -18,7 +18,7 @@ void	sort_three(t_stack **a, t_data *data)
 	int	s;
 	int	t;
 
-	if (get_len_a(*a) != 3)
+	if (get_lst_size(*a) != 3)
 		return ;
 	f = (*a)->number;
 	s = (*a)->next->number;

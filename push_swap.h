@@ -40,12 +40,18 @@ typedef struct s_data
 	t_stats			stats;
 	int				bench_mode;
 	double			disorder;
+	int				*lis_array;
+	int				lis_size;
 }					t_data;
 
 typedef struct s_stack
 {
 	int				number;
 	int				index;
+	int				pos;
+	int				target_pos; 
+	int				cost_a; // ra es positivo + y rra es -
+	int				cost_b;
 	struct s_stack	*next;
 
 }					t_stack;
@@ -71,7 +77,7 @@ double				get_disorder(int *a, int size);
 
 t_stack				*get_stack_a(t_data *data);
 void				ft_lstadd_back(t_stack **lst, t_stack *new);
-t_stack				*ft_lstnew(int content, int index);
+t_stack				*ft_lstnew(int content, int index, int pos);
 t_stack				*ft_lstlast(t_stack *lst);
 int					get_lst_size(t_stack *stack);
 
@@ -80,9 +86,15 @@ void				medium(t_stack **a, t_stack **b, t_data *data);
 void				complex(t_stack **a, t_stack **b, t_data *data);
 void				adaptive(t_stack **a, t_stack **b, t_data *data);
 
-int					get_len_a(t_stack *a);
 int					find_min_pos(t_stack *a);
 int					get_position(t_stack *a, int value);
+void				set_position(t_stack *stack);
+
+int					*get_lis_ind(t_data *data);
+int					is_in_lis(int number, t_data *data);
+void				find_target(t_stack *a, t_stack *b);
+void				final_rot(t_stack **a, t_data *data);
+int					get_abs(int n);
 
 void				sa(t_stack *a, t_data *data);
 void				sb(t_stack *b, t_data *data);

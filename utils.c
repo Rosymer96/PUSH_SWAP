@@ -90,3 +90,10 @@ double	get_disorder(int *a, int size)
 		return (0.0);
 	return ((double)mistakes / pairs);
 }
+
+int	get_abs(int n)
+{
+	if (n < 0)
+		return (-n);
+	return (n);
+}

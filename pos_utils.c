@@ -1,50 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   alg_simple_utils.c                                 :+:      :+:    :+:   */
+/*   pos_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rosvela <rosvela@student.42madrid.com      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:54:35 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/06 17:38:33 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/02/25 13:54:38 by rosvela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_min_pos(t_stack *a)
+void set_position(t_stack *stack)
 {
-	int	min_val;
-	int	min_pos;
 	int	i;
 
-	min_val = a->number;
-	min_pos = 0;
 	i = 0;
-	while (a)
+	while (stack)
 	{
-		if (a->number < min_val)
-		{
-			min_val = a->number;
-			min_pos = i;
-		}
-		a = a->next;
-		i++;
+		stack->pos = i++;
+		stack = stack->next;
 	}
-	return (min_pos);
 }
 
-int	get_len_a(t_stack *a)
+int	find_min_pos(t_stack *a)
 {
-	int	i;
+	int	min_idx;
+	int	min_pos;
 
-	i = 0;
+	min_idx = 2147483647;
+	min_pos = 0;
 	while (a)
 	{
-		i++;
+		if (a->index < min_idx)
+		{
+			min_idx = a->index;
+			min_pos = a->pos;
+		}
 		a = a->next;
 	}
-	return (i);
+	return(min_pos);
 }
 
 int	get_position(t_stack *a, int idx)
