@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 19:03:44 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/09 21:05:08 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/09 22:36:42 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	parse_and_process(t_data *data, char **av)
 	{
 		nbr = ft_split(av[i], ' ');
 		if (!nbr)
-				free_and_exit(data, NULL, 1);
+			free_and_exit(data, NULL, 1);
 		if (!process_num(nbr, data))
 			free_and_exit(data, nbr, 1);
 		free_split(nbr);
@@ -60,7 +60,6 @@ int	main(int ac, char **av)
 		free_and_exit(&data, NULL, 1);
 	if (check_duplicates(data.stack_a, data.size))
 		free_and_exit(&data, NULL, 1);
-	//ver cómo recibo los arg por el stdin
 	check_mov(&data);
 	free_and_exit(&data, NULL, 0);
 	return (0);

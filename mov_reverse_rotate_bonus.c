@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 11:57:55 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/09 21:18:52 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/09 22:32:28 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void	rev_rotate(t_stack **lst)
 void	rra(t_stack **a, t_data *data)
 {
 	rev_rotate(a);
-	write(1, "rra\n", 4);
 	data->stats.rra++;
 	data->stats.total++;
 }
@@ -46,7 +45,6 @@ void	rra(t_stack **a, t_data *data)
 void	rrb(t_stack **b, t_data *data)
 {
 	rev_rotate(b);
-	write(1, "rrb\n", 4);
 	data->stats.rrb++;
 	data->stats.total++;
 }
@@ -55,7 +53,6 @@ void	rrr(t_stack **a, t_stack **b, t_data *data)
 {
 	rev_rotate(a);
 	rev_rotate(b);
-	write(1, "rrr\n", 4);
 	data->stats.rrr++;
 	data->stats.total++;
 }

@@ -6,12 +6,12 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 19:05:16 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/09 21:05:26 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/09 22:42:46 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -43,15 +43,15 @@ typedef struct s_data
 {
 	int				*stack_a;
 	int				size;
-    t_stats			stats;
-    
+	t_stats			stats;
+
 }					t_data;
 
-char	            *get_next_line(int fd);
-char	            *ft_strchr(const char *s, int c);
-char	            *ft_strdup(const char *s);
-char	            *ft_strjoin(char const *s1, char const *s2);
-char	            *ft_substr(char const *s, unsigned int start, size_t len);
+char				*get_next_line(int fd);
+char				*ft_strchr(const char *s, int c);
+char				*ft_strdup(const char *s);
+char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_substr(char const *s, unsigned int start, size_t len);
 
 void				free_and_exit(t_data *data, char **nums_split, int status);
 void				free_split(char **words);
@@ -66,7 +66,7 @@ void				ft_lstadd_back(t_stack **lst, t_stack *new);
 t_stack				*ft_lstnew(int content);
 t_stack				*ft_lstlast(t_stack *lst);
 
-void	            check_mov(t_data *data);
+void				check_mov(t_data *data);
 
 void				sa(t_stack *a, t_data *data);
 void				sb(t_stack *b, t_data *data);

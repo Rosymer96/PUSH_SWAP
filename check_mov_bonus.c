@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:27:08 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/09 22:02:48 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/09 22:43:21 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ static int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 static void	continue_find_mov(t_data *data, char *mov, t_stack **a, t_stack **b)
 {
-	if (ft_strncmp(mov, "ra", 2) == 0)
+	if (ft_strncmp(mov, "ra\n", 3) == 0)
 		ra(a, data);
-	else if (ft_strncmp(mov, "rb", 2) == 0)
+	else if (ft_strncmp(mov, "rb\n", 3) == 0)
 		rb(b, data);
-	else if (ft_strncmp(mov, "rr", 2) == 0)
+	else if (ft_strncmp(mov, "rr\n", 3) == 0)
 		rr(a, b, data);
-	else if (ft_strncmp(mov, "rra", 3) == 0)
+	else if (ft_strncmp(mov, "rra\n", 4) == 0)
 		rra(a, data);
-	else if (ft_strncmp(mov, "rrb", 3) == 0)
+	else if (ft_strncmp(mov, "rrb\n", 4) == 0)
 		rrb(b, data);
-	else if (ft_strncmp(mov, "rrr", 3) == 0)
+	else if (ft_strncmp(mov, "rrr\n", 4) == 0)
 		rrr(a, b, data);
 	else
 	{
@@ -51,47 +51,29 @@ static void	continue_find_mov(t_data *data, char *mov, t_stack **a, t_stack **b)
 
 static void	find_mov(t_data *data, char *mov, t_stack **a, t_stack **b)
 {
-	if (ft_strncmp(mov, "sa", 2) == 0)
+	if (ft_strncmp(mov, "sa\n", 3) == 0)
 		sa(*a, data);
-	else if (ft_strncmp(mov, "sb", 2) == 0)
+	else if (ft_strncmp(mov, "sb\n", 3) == 0)
 		sb(*b, data);
-	else if (ft_strncmp(mov, "ss", 2) == 0)
+	else if (ft_strncmp(mov, "ss\n", 3) == 0)
 		ss(*a, *b, data);
-	else if (ft_strncmp(mov, "pa", 2) == 0)
+	else if (ft_strncmp(mov, "pa\n", 3) == 0)
 		pa(a, b, data);
-	else if (ft_strncmp(mov, "pb", 2) == 0)
+	else if (ft_strncmp(mov, "pb\n", 3) == 0)
 		pb(a, b, data);
 	else
 		continue_find_mov(data, mov, a, b);
 }
 
-static void	check_order(t_stack *a)
+static int	check_order(t_stack *a)
 {
-	t_stack	*tmp;
-
-	tmp = a->next;
-	while(a->next != NULL)
+	while (a && a->next)
 	{
-		tmp = a->next;
-		while (tmp->next != NULL && a->number < tmp->number)
-			tmp = tmp->next;
-		if (tmp->next == NULL)
-		{
-			if (a->number < tmp->number)
-				a = a->next;
-			else
-			{
-				write(1, "KO\n", 3);
-				return ;
-			}
-		}
-		else
-		{
-			write(1, "KO\n", 3);
-			return ;
-		}
+		if (a->number > a->next->number)
+			return (0);
+		a = a->next;
 	}
-	write(1, "OK\n", 3);
+	return (1);
 }
 
 void	check_mov(t_data *data)
@@ -105,13 +87,16 @@ void	check_mov(t_data *data)
 		return ;
 	b = NULL;
 	mov = get_next_line(0);
-	while ((mov = get_next_line(0)))
+	while (mov)
 	{
 		find_mov(data, mov, &a, &b);
 		free(mov);
+		mov = get_next_line(0);
 	}
-	free(mov);
-	check_order(a);
+	if (check_order(a) && b == NULL)
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 	free_stack(&a);
 	free_stack(&b);
 }
