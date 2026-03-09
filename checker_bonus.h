@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/19 13:28:02 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/06 18:39:05 by albben-a         ###   ########.fr       */
+/*   Created: 2026/03/09 19:05:16 by albben-a          #+#    #+#             */
+/*   Updated: 2026/03/09 21:05:26 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,69 +32,41 @@ typedef struct s_stats
 	int	total;
 }		t_stats;
 
+typedef struct s_stack
+{
+	int				number;
+	struct s_stack	*next;
+
+}					t_stack;
+
 typedef struct s_data
 {
 	int				*stack_a;
 	int				size;
-	int				strategy;
-	t_stats			stats;
-	int				bench_mode;
-	double			disorder;
-	int				*lis_array;
-	int				lis_size;
+    t_stats			stats;
+    
 }					t_data;
 
-typedef struct s_stack
-{
-	int				number;
-	int				index;
-	int				pos;
-	int				target_pos; 
-	int				cost_a; // ra es positivo + y rra es -
-	int				cost_b;
-	struct s_stack	*next;
-
-}					t_stack;
+char	            *get_next_line(int fd);
+char	            *ft_strchr(const char *s, int c);
+char	            *ft_strdup(const char *s);
+char	            *ft_strjoin(char const *s1, char const *s2);
+char	            *ft_substr(char const *s, unsigned int start, size_t len);
 
 void				free_and_exit(t_data *data, char **nums_split, int status);
 void				free_split(char **words);
 void				free_stack(t_stack **stack);
 
-int					is_flag(char *arg);
-void				update_flag(t_data *data, char *arg);
 int					process_num(char **nums_split, t_data *data);
-char				**ft_split(char const *s, char c);
-int					ft_strncmp(const char *s1, const char *s2, size_t n);
-
-int					is_numeric(char *str);
-long long			ft_atoll(char *str);
 int					check_duplicates(int *stack, int size);
-int					add_to_stack(t_data *data, int val);
-
-void				choose_algorithm(t_data *data);
-
-double				get_disorder(int *a, int size);
+char				**ft_split(char const *s, char c);
 
 t_stack				*get_stack_a(t_data *data);
 void				ft_lstadd_back(t_stack **lst, t_stack *new);
-t_stack				*ft_lstnew(int content, int index, int pos);
+t_stack				*ft_lstnew(int content);
 t_stack				*ft_lstlast(t_stack *lst);
-int					get_lst_size(t_stack *stack);
 
-void				simple(t_stack **a, t_stack **b, t_data *data);
-void				medium(t_stack **a, t_stack **b, t_data *data);
-void				complex(t_stack **a, t_stack **b, t_data *data);
-void				adaptive(t_stack **a, t_stack **b, t_data *data);
-
-int					find_min_pos(t_stack *a);
-int					get_position(t_stack *a, int value);
-void				set_position(t_stack *stack);
-
-int					*get_lis_ind(t_data *data);
-int					is_in_lis(int number, t_data *data);
-void				find_target(t_stack *a, t_stack *b);
-void				final_rot(t_stack **a, t_data *data);
-int					get_abs(int n);
+void	            check_mov(t_data *data);
 
 void				sa(t_stack *a, t_data *data);
 void				sb(t_stack *b, t_data *data);
@@ -110,9 +82,5 @@ void				rr(t_stack **a, t_stack **b, t_data *data);
 void				rra(t_stack **a, t_data *data);
 void				rrb(t_stack **b, t_data *data);
 void				rrr(t_stack **a, t_stack **b, t_data *data);
-
-size_t				ft_strlen(const char *str);
-void				ft_putnbr_fd(int n, int fd);
-void				print_benchmark(t_data *data);
 
 #endif

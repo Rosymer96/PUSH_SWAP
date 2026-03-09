@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main2.c                                            :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/06 18:39:08 by albben-a         ###   ########.fr       */
+/*   Created: 2026/03/09 19:03:44 by albben-a          #+#    #+#             */
+/*   Updated: 2026/03/09 21:05:08 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 static void	init_data(t_data *data)
 {
 	data->stack_a = NULL;
 	data->size = 0;
-	data->strategy = 0;
-	data->bench_mode = 0;
-	data->disorder = 0;
-	data->lis_array = NULL;
-	data->lis_size = 0;
 	data->stats.sa = 0;
 	data->stats.sb = 0;
 	data->stats.ss = 0;
@@ -37,23 +32,18 @@ static void	init_data(t_data *data)
 
 static void	parse_and_process(t_data *data, char **av)
 {
-	char	**nums_split;
+	char	**nbr;
 	int		i;
 
 	i = 1;
 	while (av[i])
 	{
-		if (is_flag(av[i]))
-			update_flag(data, av[i]);
-		else
-		{
-			nums_split = ft_split(av[i], ' ');
-			if (!nums_split)
+		nbr = ft_split(av[i], ' ');
+		if (!nbr)
 				free_and_exit(data, NULL, 1);
-			if (!process_num(nums_split, data))
-				free_and_exit(data, nums_split, 1);
-			free_split(nums_split);
-		}
+		if (!process_num(nbr, data))
+			free_and_exit(data, nbr, 1);
+		free_split(nbr);
 		i++;
 	}
 }
@@ -66,16 +56,12 @@ int	main(int ac, char **av)
 		return (0);
 	init_data(&data);
 	parse_and_process(&data, av);
-	if (data.strategy == 0)
-		data.strategy = 1;
 	if (data.size == 0)
 		free_and_exit(&data, NULL, 1);
 	if (check_duplicates(data.stack_a, data.size))
 		free_and_exit(&data, NULL, 1);
-	data.disorder = get_disorder(data.stack_a, data.size);
-	choose_algorithm(&data);
-	if (data.bench_mode)
-		print_benchmark(&data);
+	//ver cómo recibo los arg por el stdin
+	check_mov(&data);
 	free_and_exit(&data, NULL, 0);
 	return (0);
 }

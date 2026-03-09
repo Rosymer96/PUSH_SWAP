@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_num.c                                      :+:      :+:    :+:   */
+/*   process_num_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rosvela <rosvela@student.42madrid.com      +#+  +:+       +#+        */
+/*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/04 11:26:02 by rosvela          ###   ########.fr       */
+/*   Created: 2026/03/09 19:26:23 by albben-a          #+#    #+#             */
+/*   Updated: 2026/03/09 21:18:50 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
-int	is_numeric(char *str)
+static int	is_numeric(char *str)
 {
 	int	i;
 
@@ -33,7 +33,7 @@ int	is_numeric(char *str)
 	return (1);
 }
 
-long long	ft_atoll(char *str)
+static long long	ft_atoll(char *str)
 {
 	long long	res;
 	int			sign;
@@ -56,27 +56,7 @@ long long	ft_atoll(char *str)
 	return (res * sign);
 }
 
-int	check_duplicates(int *stack, int size)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < size)
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (stack[i] == stack[j])
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-int	add_to_stack(t_data *data, int val)
+static int	add_to_stack(t_data *data, int val)
 {
 	int	*new_s;
 	int	i;
@@ -95,4 +75,44 @@ int	add_to_stack(t_data *data, int val)
 	data->stack_a = new_s;
 	data->size++;
 	return (1);
+}
+
+int	process_num(char **nbr, t_data *data)
+{
+	int			i;
+	long long	val;
+
+	i = 0;
+	while (nbr[i])
+	{
+		if (!is_numeric(nbr[i]))
+			return (0);
+		val = ft_atoll(nbr[i]);
+		if (val > 2147483647 || val < -2147483648)
+			return (0);
+		if (!add_to_stack(data, (int)val))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	check_duplicates(int *stack, int size)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < size)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (stack[i] == stack[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

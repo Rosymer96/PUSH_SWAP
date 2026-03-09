@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_functions.c                                   :+:      :+:    :+:   */
+/*   list_functions_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 17:11:34 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/25 11:35:27 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/09 20:59:32 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
-t_stack	*ft_lstnew(int content, int index, int pos)
+t_stack	*ft_lstnew(int content)
 {
 	t_stack	*node;
 
@@ -20,8 +20,6 @@ t_stack	*ft_lstnew(int content, int index, int pos)
 	if (!node)
 		return (NULL);
 	node->number = content;
-	node->index = index;
-	node->pos = pos;
 	node->next = NULL;
 	return (node);
 }
@@ -56,15 +54,19 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 	}
 }
 
-int get_lst_size(t_stack *stack)
+t_stack	*get_stack_a(t_data *data)
 {
-	int	i;
+	t_stack	*a;
+	t_stack	*node;
+	int		i;
 
 	i = 0;
-	while (stack)
+	a = NULL;
+	while (i < data->size)
 	{
+		node = ft_lstnew(data->stack_a[i]);
+		ft_lstadd_back(&a, node);
 		i++;
-		stack = stack->next;
 	}
-	return (i);
+	return (a);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mov_swap.c                                         :+:      :+:    :+:   */
+/*   mov_swap_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 10:45:55 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/06 17:48:09 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/09 21:18:49 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 static void	swap(t_stack *lst)
 {
@@ -21,9 +21,6 @@ static void	swap(t_stack *lst)
 	tmp = lst->number;
 	lst->number = (lst->next)->number;
 	(lst->next)->number = tmp;
-	tmp = lst->index;
-	lst->index = (lst->next)->index;
-	(lst->next)->index = tmp;
 }
 
 void	sa(t_stack *a, t_data *data)
