@@ -21,6 +21,7 @@ static void	init_data(t_data *data)
 	data->disorder = 0;
 	data->lis_array = NULL;
 	data->lis_size = 0;
+	data->count_only = 0;
 	data->stats.sa = 0;
 	data->stats.sb = 0;
 	data->stats.ss = 0;
@@ -76,6 +77,8 @@ int	main(int ac, char **av)
 	choose_algorithm(&data);
 	if (data.bench_mode)
 		print_benchmark(&data);
+	if (data.count_only == 1)
+		ft_putnbr_fd(data.stats.total, 1);
 	free_and_exit(&data, NULL, 0);
 	return (0);
 }

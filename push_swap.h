@@ -43,6 +43,7 @@ typedef struct s_data
 	double			disorder;
 	int				*lis_array;
 	int				lis_size;
+	int				count_only;
 }					t_data;
 
 typedef struct s_stack

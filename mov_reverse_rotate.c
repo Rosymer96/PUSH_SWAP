@@ -38,7 +38,8 @@ static void	rev_rotate(t_stack **lst)
 void	rra(t_stack **a, t_data *data)
 {
 	rev_rotate(a);
-	write(1, "rra\n", 4);
+	if (data->count_only == 0)
+		write(1, "rra\n", 4);
 	data->stats.rra++;
 	data->stats.total++;
 }
@@ -46,7 +47,8 @@ void	rra(t_stack **a, t_data *data)
 void	rrb(t_stack **b, t_data *data)
 {
 	rev_rotate(b);
-	write(1, "rrb\n", 4);
+	if (data->count_only == 0)
+		write(1, "rrb\n", 4);
 	data->stats.rrb++;
 	data->stats.total++;
 }
@@ -55,7 +57,8 @@ void	rrr(t_stack **a, t_stack **b, t_data *data)
 {
 	rev_rotate(a);
 	rev_rotate(b);
-	write(1, "rrr\n", 4);
+	if (data->count_only == 0)
+		write(1, "rrr\n", 4);
 	data->stats.rrr++;
 	data->stats.total++;
 }

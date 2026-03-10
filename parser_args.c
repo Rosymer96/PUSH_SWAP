@@ -33,6 +33,12 @@ static void	continue_flag_check(t_data *data, char *arg)
 			free_and_exit(data, NULL, 1);
 		data->bench_mode = 1;
 	}
+	else if (ft_strncmp(arg, "--count-only", 13) == 0)
+	{
+		if (data->count_only != 0)
+			free_and_exit(data, NULL, 1);
+		data->count_only = 1;
+	}
 	else
 		free_and_exit(data, NULL, 1);
 }

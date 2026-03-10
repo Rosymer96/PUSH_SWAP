@@ -29,7 +29,8 @@ static void	swap(t_stack *lst)
 void	sa(t_stack *a, t_data *data)
 {
 	swap(a);
-	write(1, "sa\n", 3);
+	if (data->count_only == 0)
+		write(1, "sa\n", 3);
 	data->stats.sa++;
 	data->stats.total++;
 }
@@ -37,7 +38,8 @@ void	sa(t_stack *a, t_data *data)
 void	sb(t_stack *b, t_data *data)
 {
 	swap(b);
-	write(1, "sb\n", 3);
+	if (data->count_only == 0)
+		write(1, "sb\n", 3);
 	data->stats.sb++;
 	data->stats.total++;
 }
@@ -46,7 +48,8 @@ void	ss(t_stack *a, t_stack *b, t_data *data)
 {
 	swap(a);
 	swap(b);
-	write(1, "ss\n", 3);
+	if (data->count_only == 0)
+		write(1, "ss\n", 3);
 	data->stats.ss++;
 	data->stats.total++;
 }
