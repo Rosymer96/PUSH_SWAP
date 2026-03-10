@@ -69,7 +69,7 @@ int	main(int ac, char **av)
 	if (data.strategy == 0)
 		data.strategy = 1;
 	if (data.size == 0)
-		free_and_exit(&data, NULL, 1);
+		free_and_exit(&data, NULL, 0);
 	if (check_duplicates(data.stack_a, data.size))
 		free_and_exit(&data, NULL, 1);
 	data.disorder = get_disorder(data.stack_a, data.size);
