@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   alg_simple_lis.c                                   :+:      :+:    :+:   */
+/*   alg_complex_lis.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rosvela <rosvela@student.42madrid.com      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:54:35 by rosvela           #+#    #+#             */
-/*   Updated: 2026/02/25 13:54:38 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/03/10 10:55:43 by rosvela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void complete_lis_table(int *stack_a, int size, int *lengths, int *prev_pos)
+static void	complete_lis_table(int *a, int size, int *lengths, int *prev_pos)
 {
 	int	i;
 	int	j;
@@ -29,7 +29,7 @@ static void complete_lis_table(int *stack_a, int size, int *lengths, int *prev_p
 		j = -1;
 		while (++j < i)
 		{
-			if ((stack_a[i] > stack_a[j]) && (lengths[i] <= lengths[j]))
+			if ((a[i] > a[j]) && (lengths[i] <= lengths[j]))
 			{
 				lengths[i] = lengths[j] + 1;
 				prev_pos[i] = j;
@@ -56,7 +56,7 @@ static int	find_max_len(int *lengths, int size)
 
 static int	*reconst_lis(int *stack_a, int *prev_pos, int max_len, int lis_size)
 {
-	int *res;
+	int	*res;
 	int	i;
 
 	res = malloc(sizeof(int) * lis_size);
@@ -72,12 +72,12 @@ static int	*reconst_lis(int *stack_a, int *prev_pos, int max_len, int lis_size)
 	return (res);
 }
 
-int *get_lis_ind(t_data *data)
+int	*get_lis_ind(t_data *data)
 {
 	int	*lengths;
 	int	*prev_pos;
 	int	max_len;
-	int *res;
+	int	*res;
 
 	lengths = malloc(sizeof(int) * data->size);
 	if (!lengths)
@@ -112,4 +112,3 @@ int	is_in_lis(int number, t_data *data)
 	}
 	return (0);
 }
-
