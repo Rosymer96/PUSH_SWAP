@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pos_utils.c                                 :+:      :+:    :+:   */
+/*   pos_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rosvela <rosvela@student.42madrid.com      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:54:35 by rosvela           #+#    #+#             */
-/*   Updated: 2026/02/25 13:54:38 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/03/10 10:57:59 by rosvela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void set_position(t_stack *stack)
+void	set_position(t_stack *stack)
 {
 	int	i;
 
@@ -40,7 +40,7 @@ int	find_min_pos(t_stack *a)
 		}
 		a = a->next;
 	}
-	return(min_pos);
+	return (min_pos);
 }
 
 int	get_position(t_stack *a, int idx)

@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 21:18:54 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/06 17:50:00 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/10 10:58:51 by rosvela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ t_stack	*get_stack_a(t_data *data)
 	a = NULL;
 	while (i < data->size)
 	{
-		node = ft_lstnew(data->stack_a[i], get_index(data, data->stack_a[i]), i);
+		node = ft_lstnew(data->stack_a[i], get_index(data, data->stack_a[i]),
+				i);
 		ft_lstadd_back(&a, node);
 		i++;
 	}

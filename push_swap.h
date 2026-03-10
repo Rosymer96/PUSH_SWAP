@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 13:28:02 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/06 18:39:05 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/10 10:58:29 by rosvela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@
 
 typedef struct s_stats
 {
-	int	sa;
-	int	sb;
-	int	ss;
-	int	pa;
-	int	pb;
-	int	ra;
-	int	rb;
-	int	rr;
-	int	rra;
-	int	rrb;
-	int	rrr;
-	int	total;
-}		t_stats;
+	int				sa;
+	int				sb;
+	int				ss;
+	int				pa;
+	int				pb;
+	int				ra;
+	int				rb;
+	int				rr;
+	int				rra;
+	int				rrb;
+	int				rrr;
+	int				total;
+}					t_stats;
 
 typedef struct s_data
 {
@@ -49,8 +49,8 @@ typedef struct s_stack
 	int				number;
 	int				index;
 	int				pos;
-	int				target_pos; 
-	int				cost_a; // ra es positivo + y rra es -
+	int				target_pos;
+	int				cost_a;
 	int				cost_b;
 	struct s_stack	*next;
 
@@ -92,6 +92,7 @@ void				set_position(t_stack *stack);
 
 int					*get_lis_ind(t_data *data);
 int					is_in_lis(int number, t_data *data);
+void				push_non_lis(t_stack **a, t_stack **b, t_data *data);
 void				find_target(t_stack *a, t_stack *b);
 void				final_rot(t_stack **a, t_data *data);
 int					get_abs(int n);

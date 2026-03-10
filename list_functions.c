@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 17:11:34 by albben-a          #+#    #+#             */
-/*   Updated: 2026/02/25 11:35:27 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/10 10:57:38 by rosvela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_stack	*ft_lstlast(t_stack *lst)
 	return (lst);
 }
 
-static void	ft_lstadd_front(t_stack	**lst, t_stack *new)
+static void	ft_lstadd_front(t_stack **lst, t_stack *new)
 {
 	new->next = (*lst);
 	*lst = new;
@@ -56,7 +56,7 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 	}
 }
 
-int get_lst_size(t_stack *stack)
+int	get_lst_size(t_stack *stack)
 {
 	int	i;
 
