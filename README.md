@@ -242,7 +242,7 @@ When the `--bench` flag is used, the program outputs additional information to *
 Example:
 
 ```
-[bench] disorder: 0.40
+[bench] disorder: 40.00%
 [bench] strategy: Adaptive / O(n√n)
 [bench] total_ops: 13
 [bench] sa: 0  sb: 0  ss: 0  pa: 5  pb: 5
