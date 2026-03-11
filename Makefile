@@ -27,19 +27,20 @@ OBJ     = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
-	@echo " $(NAME) compilado y listo."
+	@$(CC) $(FLAGS) $(OBJ) -o $(NAME) 
+	@echo "$(NAME) compiled and ready."
 
 %.o: %.c $(HEADER)
-	$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)
-	@echo "OBJ deleted"
+	@echo "Object filed removed."
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(NAME) deleted"
+	@echo "$(NAME) executable deleted."
+
 
 re: fclean all
 
