@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 13:28:02 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/10 10:58:29 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/03/11 11:56:58 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-#include <stdio.h>
 
 typedef struct s_stats
 {
@@ -88,6 +87,7 @@ void				complex(t_stack **a, t_stack **b, t_data *data);
 void				adaptive(t_stack **a, t_stack **b, t_data *data);
 
 int					find_min_pos(t_stack *a);
+int					find_max_pos(t_stack *b);
 int					get_position(t_stack *a, int value);
 void				set_position(t_stack *stack);
 

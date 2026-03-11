@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:54:44 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/06 18:41:45 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/11 11:55:40 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,6 @@ static void	push_to_stack_b(t_stack **a, t_stack **b, int k, t_data *data)
 		else
 			ra(a, data);
 	}
-}
-
-static int	find_max_pos(t_stack *b)
-{
-	int	tmp;
-	int	pos;
-	int	i;
-
-	tmp = b->index;
-	pos = 0;
-	i = 0;
-	while (b)
-	{
-		if (tmp < b->index)
-		{
-			tmp = b->index;
-			pos = i;
-		}
-		b = b->next;
-		i++;
-	}
-	return (pos);
 }
 
 static void	back_to_stack_a(t_stack **a, t_stack **b, t_data *data)
