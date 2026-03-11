@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main2.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:18:01 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/06 18:39:08 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:07:55 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int ac, char **av)
 	if (data.strategy == 0)
 		data.strategy = 1;
 	if (data.size == 0)
-		free_and_exit(&data, NULL, 0);
+		free_and_exit(&data, NULL, 1);
 	if (check_duplicates(data.stack_a, data.size))
 		free_and_exit(&data, NULL, 1);
 	data.disorder = get_disorder(data.stack_a, data.size);

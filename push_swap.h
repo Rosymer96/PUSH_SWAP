@@ -6,7 +6,7 @@
 /*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 13:28:02 by albben-a          #+#    #+#             */
-/*   Updated: 2026/03/11 12:03:56 by albben-a         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:07:35 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int					find_min_pos(t_stack *a);
 int					find_max_pos(t_stack *b);
 int					get_position(t_stack *a, int value);
 void				set_position(t_stack *stack);
+void				sort_three(t_stack **a, t_data *data);
 
 int					*get_lis_ind(t_data *data);
 int					is_in_lis(int number, t_data *data);
