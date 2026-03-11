@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pos_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rosvela <rosvela@student.42madrid.com      +#+  +:+       +#+        */
+/*   By: albben-a <albben-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:54:35 by rosvela           #+#    #+#             */
-/*   Updated: 2026/03/10 10:57:59 by rosvela          ###   ########.fr       */
+/*   Updated: 2026/03/11 11:55:04 by albben-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,28 @@ int	find_min_pos(t_stack *a)
 		a = a->next;
 	}
 	return (min_pos);
+}
+
+int	find_max_pos(t_stack *b)
+{
+	int	tmp;
+	int	pos;
+	int	i;
+
+	tmp = b->index;
+	pos = 0;
+	i = 0;
+	while (b)
+	{
+		if (tmp < b->index)
+		{
+			tmp = b->index;
+			pos = i;
+		}
+		b = b->next;
+		i++;
+	}
+	return (pos);
 }
 
 int	get_position(t_stack *a, int idx)
